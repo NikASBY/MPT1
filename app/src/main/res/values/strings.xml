@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MPT1</string>
+    <string name="assembly_selection">Выбор сборки</string>
+    <string name="theme_selection">Выбор темы</string>
+    <string name="enter_question">Поле ввода вопроса</string>
+    <string name="add_question">Добавить вопрос</string>
+    <string name="enter_answer">Поле ввода ответа</string>
+    <string name="add_answer">Добавить ответ</string>
+    <string name="view_questions">Просмотреть вопросы</string>
+    <string name="save_base">Сохранить базу</string>
+    <string name="version">Версия</string>
+    <string name="enter_theme"> Поле ввода темы</string>
+    <string name="add_theme">Добавить тему</string>
+    <string name="next_add_questions">Перейти к добавлению вопросов</string>
+    <string name="view_theme">Просмотреть темы</string>
+    <string name="enter_collect">Поле ввода соллекции</string>
+    <string name="startTest">Начать тест</string>
+    <string name="createBase">Создать базу</string>
+</resources>
