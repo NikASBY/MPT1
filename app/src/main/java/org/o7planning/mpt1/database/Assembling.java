@@ -6,6 +6,7 @@ import androidx.room.TypeConverters;
 
 import org.o7planning.mpt1.database.Converter.ThemeConverter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,5 +20,5 @@ public class Assembling {
     public String assembling;
 
     @TypeConverters({ThemeConverter.class})
-    public List<String> theme;
+    public List<String> theme = new ArrayList<>();
 }

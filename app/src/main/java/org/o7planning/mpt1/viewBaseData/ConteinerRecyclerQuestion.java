@@ -38,7 +38,7 @@ public class ConteinerRecyclerQuestion extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.collect_recycler,container,false);
         questionRecyclerView = (RecyclerView) v.findViewById(R.id.collect_recycler);
-        questionRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        questionRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
 
         posicCollect = (int)getActivity().getIntent().getLongExtra("posiciaCollect",0);
         posicTheme = (int)getActivity().getIntent().getLongExtra("posiciaTheme",0);
@@ -57,7 +57,7 @@ public class ConteinerRecyclerQuestion extends Fragment {
                 listAnswer.add(questions.get(i).answers);
             }
         }
-
+        
         mAdapterQuestion = new QuestionAdapter(listQuestion,listAnswer);
         questionRecyclerView.setAdapter(mAdapterQuestion);
         return v;

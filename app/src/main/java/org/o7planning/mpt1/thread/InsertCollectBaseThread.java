@@ -8,8 +8,6 @@ import org.o7planning.mpt1.database.MyDatabase;
 import org.o7planning.mpt1.database.SinglDatabase;
 import org.o7planning.mpt1.database.dao.AssemblingDao;
 
-import java.util.List;
-
 public class InsertCollectBaseThread implements Runnable{
 
     public Thread mThread;
@@ -22,6 +20,10 @@ public class InsertCollectBaseThread implements Runnable{
     private String assembling;
     private String theme;
     private String threadName;
+
+    public Long getUid() {
+        return uid;
+    }
 
     public InsertCollectBaseThread(String threadName, Context context, Long uid, String assembling, String theme) {
         this.mContext = context;

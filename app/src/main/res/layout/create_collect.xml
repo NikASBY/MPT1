@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@color/teal_700">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,38 +23,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:background="@drawable/style_menu">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/enterCollect"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="bottom"
-                        android:hint="@string/enter_collect"
-                        android:maxWidth="260dp"
-                        android:maxHeight="100dp"
-                        android:minWidth="260dp"
-                        android:minHeight="100dp" />
-                </LinearLayout>
-
-                <LinearLayout
+                <EditText
+                    android:id="@+id/enterCollect"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:gravity="center"
+                    android:hint="@string/enter_collect"
+                    android:maxHeight="100dp"
+                    android:minHeight="100dp"
+                    android:textSize="24sp" />
 
-                    <Button
-                        android:id="@+id/addCollect"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="1dp"
-                        android:text="Добавить сборку" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/addCollect"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/style_button"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:text="ДОБАВИТЬ НОВУЮ КОЛЛЕКЦИЮ"
+                    android:minHeight="48dp"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
@@ -63,12 +55,16 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="50dp">
 
-                <Button
+                <TextView
                     android:id="@+id/next_add_Theme"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/style_button"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:text="ПЕРЕЙТИ К ДОБАВЛЕНИЮ ТЕМ"
                     android:minHeight="48dp"
-                    android:text="Перейти к добавлению тем" />
+                    android:gravity="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -83,12 +79,16 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <Button
+                    <TextView
                         android:id="@+id/viewCollect"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/style_button"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:text="ПРОСМОТРЕТЬ КОЛЛЕКЦИЮ"
                         android:minHeight="48dp"
-                        android:text="Просмотреть сбороки" />
+                        android:gravity="center"/>
                 </LinearLayout>
 
             </LinearLayout>

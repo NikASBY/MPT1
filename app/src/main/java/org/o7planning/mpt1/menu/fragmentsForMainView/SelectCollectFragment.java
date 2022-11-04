@@ -1,4 +1,4 @@
-package org.o7planning.mpt1.menu.viewMain;
+package org.o7planning.mpt1.menu.fragmentsForMainView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -60,7 +60,7 @@ public class SelectCollectFragment extends Fragment {
         }
 
         if(mAssemblingList.size() == 0) {
-            ListThemeFragment.getThemeList(collectTheme, 0);//Передать sThrme в ListThemeFragment
+            ListThemeFragment.getThemeList(collectTheme, 0, "");//Передать sThrme в ListThemeFragment
         }
 
         ArrayAdapter<String> adapterCollect = new ArrayAdapter<String>(getContext(),R.layout.row,R.id.textView1,sCollect);
@@ -68,7 +68,7 @@ public class SelectCollectFragment extends Fragment {
         selectCollect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ListThemeFragment.getThemeList(mCollect.get(i), i);//Передать sThrme в ListThemeFragment
+                ListThemeFragment.getThemeList(mCollect.get(i), i, mAssemblingList.get(i).assembling);//Передать sThrme в ListThemeFragment
                 Fragment fragment1 = getActivity().getSupportFragmentManager().findFragmentById(R.id.list_tests);
                 FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
                 fragmentManager1.beginTransaction().remove(fragment1).add(R.id.list_tests,new ListThemeFragment()).commit();

@@ -27,4 +27,7 @@ public interface QuestionDao {
 
     @Delete
     public void delete(Questions questions);
+
+    @Query("DELETE FROM questions")
+    public void deleteAllFromTable();
 }

@@ -1,3 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">MPT1</string>
+    <string name="assembly_selection">Assembly Selection</string>
+    <string name="theme_selection">Choosing a topic</string>
+    <string name="enter_question">Question input field</string>
+    <string name="add_question">ADD A QUESTION</string>
+    <string name="enter_answer">Answer input field</string>
+    <string name="add_answer">Add an answer</string>
+    <string name="view_questions">VIEW QUESTIONS</string>
+    <string name="save_base">SAVE THE DATABASE</string>
+    <string name="version">Version</string>
+    <string name="enter_theme">Theme input field</string>
+    <string name="add_theme">ADD A THEME</string>
+    <string name="next_add_questions">GO TO ADDING QUESTIONS</string>
+    <string name="view_theme">VIEW THEMES</string>
+    <string name="enter_collect">Collection Entry field</string>
+    <string name="startTest">Start the test</string>
+    <string name="createBase">Create a database</string>
+    <string name="in_main_menu">To the main menu</string>
+    <string name="load_file">Downloading the prepared file</string>
+    <string name="about">Information about the application</string>
+    <string name="clean_base">Clear the database</string>
+    <string name="exit_test">Finish the test</string>
+    <string name="setting_application">SETTING APPLICATION</string>
 </resources>

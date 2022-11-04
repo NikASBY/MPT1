@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.o7planning.mpt1">
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,21 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MPT1">
         <activity
-            android:name=".menu.MainMenuActivity"
+            android:name=".menu.activity.StartApplicationSettingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddThemeActivity"></activity>
-        <activity android:name=".viewBaseData.CollectActivity"></activity>
-        <activity android:name=".viewBaseData.ThemeActivity"></activity>
-        <activity android:name=".AddQuestionActivity"></activity>
-        <activity android:name=".viewBaseData.QuestionActivity"></activity>
-        <activity android:name=".AddCollectActivity"></activity>
-        <activity android:name=".menu.StartTest"></activity>
+        <activity android:name=".viewBaseData.QuestionRecycler"/>
+        <activity android:name=".viewBaseData.ThemeRecycler"/>
+        <activity android:name=".viewBaseData.CollectRecycler"/>
+        <activity android:name=".menu.activity.SettingTestActivity"/>
+        <activity android:name=".menu.activity.StartTestActivity"/>
+        <activity android:name=".menu.activity.NewMainMenu"/>
     </application>
 
 </manifest>

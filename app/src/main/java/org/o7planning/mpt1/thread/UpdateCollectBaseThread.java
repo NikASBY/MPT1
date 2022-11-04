@@ -8,8 +8,6 @@ import org.o7planning.mpt1.database.MyDatabase;
 import org.o7planning.mpt1.database.SinglDatabase;
 import org.o7planning.mpt1.database.dao.AssemblingDao;
 
-import java.util.List;
-
 public class UpdateCollectBaseThread implements Runnable {
 
     public Thread mThread;

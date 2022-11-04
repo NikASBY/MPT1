@@ -1,6 +1,7 @@
-package org.o7planning.mpt1.menu;
+package org.o7planning.mpt1.menu.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -21,17 +22,19 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.o7planning.mpt1.Dialog.AboutFragment;
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Assembling;
-import org.o7planning.mpt1.menu.viewMain.CreateCollectFragment;
-import org.o7planning.mpt1.menu.viewMain.CreateQuestionFragment;
-import org.o7planning.mpt1.menu.viewMain.HomePanelFragment;
-import org.o7planning.mpt1.menu.viewMain.ListCollectFragment;
-import org.o7planning.mpt1.menu.viewMain.ListThemeFragment;
-import org.o7planning.mpt1.menu.viewMain.SelectCollectFragment;
+import org.o7planning.mpt1.database.Settingss;
+import org.o7planning.mpt1.menu.fragmentsForMainView.ChangeLangSettingFragment;
+import org.o7planning.mpt1.menu.fragmentsForMainView.CreateCollectFragment;
+import org.o7planning.mpt1.menu.fragmentsForMainView.HomePanelFragment;
+import org.o7planning.mpt1.menu.fragmentsForMainView.ListThemeFragment;
+import org.o7planning.mpt1.menu.fragmentsForMainView.SelectCollectFragment;
 import org.o7planning.mpt1.thread.AllCleanAssemblingBaseThread;
 import org.o7planning.mpt1.thread.AllCleanQuestionBaseThread;
 import org.o7planning.mpt1.thread.AllCollectBaseThread;
+import org.o7planning.mpt1.thread.AllSettingsThread;
 import org.o7planning.mpt1.thread.InsertCollectBaseThread;
 import org.o7planning.mpt1.thread.InsertQuestionsBaseThread;
+import org.o7planning.mpt1.thread.InsertSettingsThread;
 import org.o7planning.mpt1.thread.UpdateCollectBaseThread;
 import org.o7planning.mpt1.viewBaseData.SinglAbstractFragmentActivity;
 
@@ -42,6 +45,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 public class NewMainMenu extends SinglAbstractFragmentActivity {
 
@@ -52,6 +56,21 @@ public class NewMainMenu extends SinglAbstractFragmentActivity {
     private Fragment fragment;
     private Fragment fragment2;
     private FragmentManager fragmentManager;
+
+    private Locale locale;
+    private Configuration configuration;
+
+    private AllSettingsThread allSettingsThread;
+    private Boolean changeLangRu;
+    private Boolean changeLangEn;
+    private List<Settingss> settingssList;
+
+    private Fragment listTests;
+    private Fragment createCollect;
+    private Fragment LangSetting;
+    private Fragment selectUser;
+    private FragmentManager fragmentManager2;
+
 
     @Override
     public Integer getLayout1() {
@@ -101,6 +120,7 @@ public class NewMainMenu extends SinglAbstractFragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.new_layout_app_start);
         if (Build.VERSION.SDK_INT >= 30){
             if (!Environment.isExternalStorageManager()){
                 Intent getpermission = new Intent();
@@ -114,6 +134,44 @@ public class NewMainMenu extends SinglAbstractFragmentActivity {
         directory2.mkdirs();
         intent = new Intent(getApplicationContext(), NewMainMenu.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        allSettingsThread = new AllSettingsThread("All_settings", getApplicationContext());
+        try {
+            allSettingsThread.mThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        settingssList = allSettingsThread.getSettingsAll();
+        changeLangRu = settingssList.get(0).changeLangRu;
+        changeLangEn = settingssList.get(0).changeLangEn;
+
+
+        if(changeLangRu) {
+            InsertSettingsThread insertSettingsThread = new InsertSettingsThread("insert_base_lang", getApplicationContext(), true, false);
+            locale = new Locale("ru");
+            Locale.setDefault(locale);
+            configuration = new Configuration();
+            configuration.setLocale(locale);
+            getBaseContext().getResources().updateConfiguration(configuration, null);
+            getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ListThemeFragment()).replace(R.id.select_user, new SelectCollectFragment()).commit();
+            Log.i("(NewMainMenu) Lang: ", locale.getLanguage());
+        } else {
+            InsertSettingsThread insertSettingsThread = new InsertSettingsThread("insert_base_lang", getApplicationContext(), false, true);
+            locale = new Locale("en");
+            Locale.setDefault(locale);
+            configuration = new Configuration();
+            configuration.setLocale(locale);
+            getBaseContext().getResources().updateConfiguration(configuration, null);
+            getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ListThemeFragment()).replace(R.id.select_user, new SelectCollectFragment()).commit();
+            Log.i("(NewMainMenu) Lang: ", locale.getLanguage());
+        }
+
+
+        fragmentManager2 = getSupportFragmentManager();
+        listTests = new ListThemeFragment();
+        createCollect = new CreateCollectFragment();
+        LangSetting = new ChangeLangSettingFragment();
+        selectUser = new SelectCollectFragment();
     }
 
     @Override
@@ -124,7 +182,6 @@ public class NewMainMenu extends SinglAbstractFragmentActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.in_memu1:
                 try {

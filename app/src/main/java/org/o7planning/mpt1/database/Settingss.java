@@ -4,11 +4,13 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Settings {
+public class Settingss {
 
     @PrimaryKey
     public long id;
 
-    public Boolean changeLang;
+    public Boolean changeLangRu;
+
+    public Boolean changeLangEn;
 
 }

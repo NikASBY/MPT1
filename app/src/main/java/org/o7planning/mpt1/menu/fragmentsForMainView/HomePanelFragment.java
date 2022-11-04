@@ -1,6 +1,5 @@
-package org.o7planning.mpt1.menu.viewMain;
+package org.o7planning.mpt1.menu.fragmentsForMainView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,12 +15,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import org.o7planning.mpt1.Dialog.AboutFragment;
+import org.o7planning.mpt1.Dialog.SettingFragment;
 import org.o7planning.mpt1.R;
-import org.o7planning.mpt1.menu.StartTest;
 
 public class HomePanelFragment extends Fragment {
 
     private BottomNavigationView bottomNavigationView;
+    private Fragment listTests;
+    private Fragment createCollect;
+    private Fragment LangSetting;
+    private Fragment selectUser;
+    private FragmentManager fragmentManager;
 
     @Nullable
     @Override
@@ -29,34 +33,31 @@ public class HomePanelFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.home_panel_v2,container,false);
 
+        fragmentManager = getActivity().getSupportFragmentManager();
+        listTests = new ListThemeFragment();
+        createCollect = new CreateCollectFragment();
+        LangSetting = new ChangeLangSettingFragment();
+        selectUser = new SelectCollectFragment();
+
         bottomNavigationView = (BottomNavigationView) view.findViewById(R.id.home_panel_v2);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                    case R.id.button_home:
-
-                       FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
-                       Fragment listTests2 = getActivity().getSupportFragmentManager().findFragmentById(R.id.list_tests);
-                       Fragment selectUser2 = getActivity().getSupportFragmentManager().findFragmentById(R.id.select_user);
-                       if(selectUser2 == null) {
-                           fragmentManager1.beginTransaction().remove(listTests2).add(R.id.select_user,new SelectCollectFragment()).add(R.id.list_tests,new ListThemeFragment()).commit();
-                       }
-
+                       fragmentManager.beginTransaction().replace(R.id.select_user, selectUser).replace(R.id.list_tests, listTests).commit();
                        break;
                    case R.id.button_create:
-
-                       FragmentManager fragmentManager2 = getActivity().getSupportFragmentManager();
-                       Fragment listTests = getActivity().getSupportFragmentManager().findFragmentById(R.id.list_tests);
-                       Fragment selectUser = getActivity().getSupportFragmentManager().findFragmentById(R.id.select_user);
-                       if(selectUser != null) {
-                           fragmentManager2.beginTransaction().remove(selectUser).remove(listTests).add(R.id.list_tests,new CreateCollectFragment()).commit();
-                       }
-
+                       fragmentManager.beginTransaction().replace(R.id.list_tests, createCollect).commit();
+                        if(getActivity().getSupportFragmentManager().findFragmentById(R.id.select_user) != null) {
+                            fragmentManager.beginTransaction().remove(getActivity().getSupportFragmentManager().findFragmentById(R.id.select_user)).commit();
+                        }
                        break;
                    case R.id.button_setting:
-                       Intent intent3 = new Intent(getContext(), StartTest.class);
-                       startActivity(intent3);
+                       fragmentManager.beginTransaction().replace(R.id.list_tests, LangSetting).commit();
+                       if(getActivity().getSupportFragmentManager().findFragmentById(R.id.select_user) != null) {
+                           fragmentManager.beginTransaction().remove(getActivity().getSupportFragmentManager().findFragmentById(R.id.select_user)).commit();
+                       }
                        break;
                    case R.id.button_about:
                        FragmentManager fragmentManager3 = getActivity().getSupportFragmentManager();

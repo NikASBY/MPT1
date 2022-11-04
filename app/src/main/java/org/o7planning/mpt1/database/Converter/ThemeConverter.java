@@ -3,9 +3,7 @@ package org.o7planning.mpt1.database.Converter;
 import androidx.room.TypeConverter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ThemeConverter {
     @TypeConverter

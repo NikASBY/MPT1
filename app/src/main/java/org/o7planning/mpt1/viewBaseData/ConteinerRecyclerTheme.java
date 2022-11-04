@@ -74,13 +74,13 @@ public class ConteinerRecyclerTheme extends Fragment {
         public CollectHolderTheme(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.pridstavlenie_collect,parent,false));
             itemView.setOnClickListener(this);
-            mTextView = (TextView) itemView.findViewById(R.id.textView);
+            mTextView = (TextView) itemView.findViewById(R.id.nameTheme);
             title = (TextView) itemView.findViewById(R.id.title);
         }
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getContext(),QuestionActivity.class);
+            Intent intent = new Intent(getContext(),QuestionRecycler.class);
             intent.putExtra("posiciaCollect",posic);
             intent.putExtra("posiciaTheme", pos);
             startActivity(intent);

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@color/teal_700">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +23,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/style_spinner"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <TextView
                     android:id="@+id/assembly_selection"
@@ -46,7 +50,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/style_spinner"
+                android:layout_marginTop="6dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <TextView
                     android:id="@+id/theme_selection"
@@ -71,7 +79,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/style_menu"
+                android:layout_marginTop="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -83,12 +93,13 @@
                         android:id="@+id/enter_question"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="bottom"
+                        android:gravity="center"
                         android:hint="@string/enter_question"
                         android:maxWidth="260dp"
-                        android:maxHeight="100dp"
+                        android:maxHeight="80dp"
                         android:minWidth="260dp"
-                        android:minHeight="100dp" />
+                        android:minHeight="80dp"
+                        android:textSize="24sp"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -97,7 +108,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/style_menu"
+                android:layout_marginTop="6dp"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -109,12 +123,13 @@
                         android:id="@+id/enter_answer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="bottom"
+                        android:gravity="center"
                         android:hint="@string/enter_answer"
                         android:maxWidth="260dp"
-                        android:maxHeight="100dp"
+                        android:maxHeight="80dp"
                         android:minWidth="260dp"
-                        android:minHeight="100dp" />
+                        android:minHeight="80dp"
+                        android:textSize="24sp"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -131,11 +146,15 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <Button
+                    <TextView
                         android:id="@+id/add_question"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/style_button"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:minHeight="48dp"
+                        android:gravity="center"
                         android:text="@string/add_question" />
                 </LinearLayout>
 
@@ -153,11 +172,15 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <Button
+                    <TextView
                         android:id="@+id/view_questions"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/style_button"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:minHeight="48dp"
+                        android:gravity="center"
                         android:text="@string/view_questions" />
                 </LinearLayout>
 
@@ -166,14 +189,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <Button
+                <TextView
                     android:id="@+id/save_base"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/style_button"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
                     android:minHeight="48dp"
+                    android:gravity="center"
                     android:text="@string/save_base" />
             </LinearLayout>
 

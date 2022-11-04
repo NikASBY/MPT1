@@ -1,4 +1,4 @@
-package org.o7planning.mpt1.menu.viewMain;
+package org.o7planning.mpt1.menu.fragmentsForMainView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,9 +22,9 @@ import org.o7planning.mpt1.viewBaseData.CollectRecycler;
 public class CreateCollectFragment extends Fragment {
 
     private EditText addCollectET;
-    private Button addCollectB;
-    private Button nextAddThemeB;
-    private Button viewCollect;
+    private TextView addCollectB;
+    private TextView nextAddThemeB;
+    private TextView viewCollect;
     private InsertCollectBaseThread mInsertCollectBaseThread;
     private TextView mVersion;
 
@@ -33,7 +33,7 @@ public class CreateCollectFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.create_collect,container,false);
-        nextAddThemeB = (Button) view.findViewById(R.id.next_add_Theme);
+        nextAddThemeB = (TextView) view.findViewById(R.id.next_add_Theme);
         nextAddThemeB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +44,7 @@ public class CreateCollectFragment extends Fragment {
         });
 
         addCollectET = (EditText) view.findViewById(R.id.enterCollect);
-        addCollectB = (Button) view.findViewById(R.id.addCollect);
+        addCollectB = (TextView) view.findViewById(R.id.addCollect);
         addCollectB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +56,7 @@ public class CreateCollectFragment extends Fragment {
             }
         });
 
-        viewCollect = (Button) view.findViewById(R.id.viewCollect);
+        viewCollect = (TextView) view.findViewById(R.id.viewCollect);
         viewCollect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

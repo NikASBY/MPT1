@@ -1,4 +1,4 @@
-package org.o7planning.mpt1.menu.viewMain;
+package org.o7planning.mpt1.menu.fragmentsForMainView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,9 +33,9 @@ public class CreateThemeFragment extends Fragment {
     private String[] s;
     private EditText enterThemeET;
 
-    private Button addThemeB;
-    private Button viewCollect;
-    private Button addQuestions;
+    private TextView addThemeB;
+    private TextView viewCollect;
+    private TextView addQuestions;
 
     private AllCollectBaseThread mAllCollectBaseThread;
     private UpdateCollectBaseThread mUpdateCollectBaseThread;
@@ -66,7 +66,7 @@ public class CreateThemeFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),R.layout.row,R.id.textView1,s);
         mSpinner.setAdapter(adapter);
         enterThemeET = (EditText) view.findViewById(R.id.enter_theme);
-        addThemeB = (Button) view.findViewById(R.id.add_theme);
+        addThemeB = (TextView) view.findViewById(R.id.add_theme);
         addThemeB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,7 +82,7 @@ public class CreateThemeFragment extends Fragment {
                 enterThemeET.setText("");
             }
         });
-        viewCollect = (Button) view.findViewById(R.id.view_theme);
+        viewCollect = (TextView) view.findViewById(R.id.view_theme);
         viewCollect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +91,7 @@ public class CreateThemeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        addQuestions = (Button) view.findViewById(R.id.next_add_questions);
+        addQuestions = (TextView) view.findViewById(R.id.next_add_questions);
         addQuestions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

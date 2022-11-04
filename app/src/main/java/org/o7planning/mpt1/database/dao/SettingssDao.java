@@ -11,7 +11,7 @@ import org.o7planning.mpt1.database.Settingss;
 import java.util.List;
 
 @Dao
-public interface SettingsDao {
+public interface SettingssDao {
 
     @Query("SELECT * FROM Settingss")
     List<Settingss> getAll();

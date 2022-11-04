@@ -14,18 +14,60 @@
         <entry key="..\:/NEWB/MPT1/app/src/main/res/layout/new1.xml" value="0.36666666666666664" />
         <entry key="..\:/NEWB/MPT1/app/src/main/res/layout/pridstavlenie_collect.xml" value="0.36666666666666664" />
         <entry key="..\:/NEWB/MPT1/app/src/main/res/layout/row.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1435" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/button_checked.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/button_home.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/button_normal.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/button_pressed.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/home.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/home_panel.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/home_panel_draw.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/ic_home_foreground.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/ic_home_layer.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/ic_launcher.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1435" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2025" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/inset.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/style_button.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/style_inset.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/style_item.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/style_menu.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/style_progress_bar.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/style_spinner.xml" value="0.275" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/drawable/style_text.xml" value="0.275" />
         <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/collect_recycler.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/conteiner_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/create_collect.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/create_question.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/create_question.xml" value="0.36013986013986016" />
         <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/create_test.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/create_theme.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/create_test_legasy.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/create_theme.xml" value="0.33" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/dialog_about.xml" value="0.33" />
         <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/form_test.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/form_test_fragment.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/home_panel.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/home_panel_v2.xml" value="0.5" />
         <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/main_menu.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/main_menu_ost.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/new_layout_app_start.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/predstavlenie_question.xml" value="0.33" />
         <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/pridstavlenie_collect.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/pridstavlenie_collect_v2.xml" value="0.5" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/progress_bar_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/progress_bar_load_fragment.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/row.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/select_collect_fragment.xml" value="0.5" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/setting_fragment.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/setting_test_activity.xml" value="0.33" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/start_test_fragment.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/layout/test1.xml" value="0.33" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/menu/main_menu.xml" value="0.2970464135021097" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/menu/menu_exit_test.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/menu/menu_home_panel.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/menu/menu_in_main_enu.xml" value="0.2970464135021097" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2025" />
+        <entry key="..\:/Users/CORSAIR/Desktop/MPT1/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.275" />
       </map>
     </option>
   </component>

@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import org.o7planning.mpt1.R;
 
-public class ProgressBarLoad extends Fragment {
+public class ProgressBarLoadFragment extends Fragment {
 
     private ProgressBar progressBar;
 

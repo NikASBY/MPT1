@@ -1,5 +1,6 @@
-package org.o7planning.mpt1.menu.viewMain;
+package org.o7planning.mpt1.menu.fragmentsForMainView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Questions;
+import org.o7planning.mpt1.menu.activity.SettingTestActivity;
 import org.o7planning.mpt1.thread.AllQuestionsBaseThread;
 
 import java.util.ArrayList;
@@ -30,12 +32,15 @@ public class ListThemeFragment extends Fragment {
     private List<Questions> questions = new ArrayList<>();
 
     private static int contCollectL;
+    private static String nameCollectL;
+    //private String nameTheme;
 
 
-    public static List<String> getThemeList(List<String> listTheme, int contCollect) {
+    public static List<String> getThemeList(List<String> listTheme, int contCollect, String nameCollect) {
         if(listTheme != null || listTheme.size() != 0) {
             collectThemeAd = listTheme;
             contCollectL = contCollect;
+            nameCollectL = nameCollect;
         }
         return collectThemeAd;
     }
@@ -67,6 +72,10 @@ public class ListThemeFragment extends Fragment {
         private TextView title;
         private TextView countTheme;
 
+        private int contCollect;
+        private int contTheme;
+        private String nameTheme;
+
         public CollectHolderTheme(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.pridstavlenie_collect_v2,parent,false));
             itemView.setOnClickListener(this);
@@ -77,7 +86,12 @@ public class ListThemeFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-
+            Intent intent = new Intent(getContext(), SettingTestActivity.class);
+            intent.putExtra("contCollect", contCollect);
+            intent.putExtra("contTheme", contTheme);
+            intent.putExtra( "nameCollect", nameCollectL);
+            intent.putExtra("nameTheme", nameTheme);
+            startActivity(intent);
         }
     }
 
@@ -100,20 +114,21 @@ public class ListThemeFragment extends Fragment {
         public void onBindViewHolder(@NonNull CollectHolderTheme holder, int position) {
             List<String> listQuestion = new ArrayList<>();
             if(collectThemeAd.size() > 0) {
-                String strings = collectThemeAd.get(position);
-                holder.mTextView.setText(strings);
+                String nameTheme = collectThemeAd.get(position);
+                holder.mTextView.setText(nameTheme);
                 holder.title.setText("Тема №" + position);
-
-
+                holder.nameTheme = nameTheme;
                 //Формирую список вопросов конкретной темы
                 for(int i = 0; i<questions.size(); i++) {
                     if(questions.get(i).uidCollect == contCollectL && questions.get(i).uidTheme == position) {
                         listQuestion.add(questions.get(i).questions);
-
                     }
                 }
                 holder.countTheme.setText("Вопросов: " + listQuestion.size());
             }
+            holder.contCollect = contCollectL;
+            int pos = position;
+            holder.contTheme = pos;
         }
 
         @Override

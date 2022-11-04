@@ -2,10 +2,12 @@ package org.o7planning.mpt1.database.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
+import androidx.room.DeleteTable;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import org.apache.poi.util.Removal;
 import org.o7planning.mpt1.database.Assembling;
 
 import java.util.List;
@@ -27,4 +29,8 @@ public interface AssemblingDao {
 
     @Delete
     public void delete(Assembling assembling);
+
+    @Query("DELETE FROM assembling")
+    public void deleteAllFromTable();
+
 }
