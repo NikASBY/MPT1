@@ -1,5 +1,6 @@
 package org.o7planning.mpt1.menu.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Questions;
 import org.o7planning.mpt1.menu.fragmentsForMainView.ProgressBarFragment;
+import org.o7planning.mpt1.menu.fragmentsForMainView.ResultTest;
 import org.o7planning.mpt1.menu.fragmentsForMainView.StartTest_fragment;
 import org.o7planning.mpt1.thread.AllQuestionsBaseThread;
 import org.o7planning.mpt1.viewBaseData.SinglAbstractFragmentActivity;
@@ -31,6 +33,7 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
 
     private static int contTheme;
     private static int line;
+    private static String nameTheme;
 
     private static Integer right = 0;
     private static Integer totalNumber = 0;
@@ -96,6 +99,11 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
         contTheme = getIntent().getIntExtra("contTheme2", 0);
         checkQuestion = getIntent().getBooleanExtra("checkQuestion", false);
         line = getIntent().getIntExtra("line", 0);
+        nameTheme = getIntent().getStringExtra("nameTheme");
+    }
+
+    public static String getNameTheme() {
+        return nameTheme;
     }
 
     public static int getContCollect() {
@@ -146,7 +154,7 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
         StartTestActivity.totalNumber = totalNumber;
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_exit_test,menu);
         return super.onCreateOptionsMenu(menu);
@@ -156,8 +164,19 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.exit_test:
-                finish();
+                if(!getCheckQuestion()) {
+                    Intent intent1 = new Intent(StartTestActivity.this, ResultTestActivity.class);
+                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent1);
+                } else {
+                    Intent intent1 = new Intent(StartTestActivity.this, ResultTestActivity.class);
+                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent1);
+                }
+
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

@@ -1,5 +1,6 @@
 package org.o7planning.mpt1.menu.fragmentsForMainView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +17,14 @@ import androidx.fragment.app.FragmentManager;
 
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Questions;
+import org.o7planning.mpt1.menu.activity.ResultTestActivity;
 import org.o7planning.mpt1.menu.activity.StartTestActivity;
 import org.o7planning.mpt1.thread.AllQuestionsBaseThread;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class StartTest_fragment extends Fragment {
 
@@ -118,6 +121,7 @@ public class StartTest_fragment extends Fragment {
                 radioButton1.setText(aStrings.get(i1));
                 radioButton2.setText(aStrings.get(i2));
                 radioButton3.setText(aStrings.get(i3));
+                //radioButton1.setBackground(getResources().getDrawable(R.drawable.right_qnswer));
 
                 randomQ = new Random().nextInt(3);
                 switch (randomQ) {
@@ -255,6 +259,7 @@ public class StartTest_fragment extends Fragment {
                             if(lineNext != qStrings.size()) {
                                 if (radioButton1.getText().equals(answer)) {
                                     right = right + 1;
+
                                 }
                                 totalNumber = totalNumber + 1;
                                 StartTestActivity.setContCollect(contCollect);
@@ -266,7 +271,14 @@ public class StartTest_fragment extends Fragment {
                                 fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment()).commit();
                                 fragmentManager3.beginTransaction().replace(R.id.progressBar_test_container, new ProgressBarFragment()).commit();
                             } else {
-                                getActivity().finish();
+                                Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
+                                intent1.putExtra("totalNumber", totalNumber + 1);
+                                intent1.putExtra("right_answer", right);
+                                intent1.putExtra("contTheme", contTheme);
+                                intent1.putExtra("contCollect", contCollect);
+                                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent1);
                             }
                             break;
                         case R.id.radioButton2:
@@ -284,7 +296,14 @@ public class StartTest_fragment extends Fragment {
                                 fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment()).commit();
                                 fragmentManager3.beginTransaction().replace(R.id.progressBar_test_container, new ProgressBarFragment()).commit();
                             } else {
-                                getActivity().finish();
+                                Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
+                                intent1.putExtra("totalNumber", totalNumber + 1);
+                                intent1.putExtra("right_answer", right);
+                                intent1.putExtra("contTheme", contTheme);
+                                intent1.putExtra("contCollect", contCollect);
+                                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent1);
                             }
                             break;
                         case R.id.radioButton3:
@@ -302,7 +321,14 @@ public class StartTest_fragment extends Fragment {
                                 fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment()).commit();
                                 fragmentManager3.beginTransaction().replace(R.id.progressBar_test_container, new ProgressBarFragment()).commit();
                             } else {
-                                getActivity().finish();
+                                Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
+                                intent1.putExtra("totalNumber", totalNumber + 1);
+                                intent1.putExtra("right_answer", right);
+                                intent1.putExtra("contTheme", contTheme);
+                                intent1.putExtra("contCollect", contCollect);
+                                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent1);
                             }
                             break;
                         default:

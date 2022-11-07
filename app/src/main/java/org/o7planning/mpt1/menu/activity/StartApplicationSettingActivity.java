@@ -56,6 +56,8 @@ public class StartApplicationSettingActivity extends AppCompatActivity {
         }
 
         Intent intent = new Intent(this, NewMainMenu.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
 
     }

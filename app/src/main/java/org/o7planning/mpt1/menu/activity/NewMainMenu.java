@@ -134,6 +134,7 @@ public class NewMainMenu extends SinglAbstractFragmentActivity {
         directory2.mkdirs();
         intent = new Intent(getApplicationContext(), NewMainMenu.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         allSettingsThread = new AllSettingsThread("All_settings", getApplicationContext());
         try {
