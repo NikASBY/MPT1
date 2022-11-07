@@ -25,6 +25,7 @@
         <activity android:name=".menu.activity.SettingTestActivity"/>
         <activity android:name=".menu.activity.StartTestActivity"/>
         <activity android:name=".menu.activity.NewMainMenu"/>
+        <activity android:name=".menu.activity.ResultTestActivity"/>
     </application>
 
 </manifest>

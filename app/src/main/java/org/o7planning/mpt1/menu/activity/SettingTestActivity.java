@@ -107,6 +107,9 @@ public class SettingTestActivity extends AppCompatActivity {
                 intentButtonOk.putExtra("contTheme2", contTheme);
                 intentButtonOk.putExtra("checkQuestion", checkQuestion);
                 intentButtonOk.putExtra("line", lineNext);
+                intentButtonOk.putExtra("nameTheme", nameTheme);
+                intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentButtonOk);
             }
         });
