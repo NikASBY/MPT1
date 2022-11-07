@@ -184,61 +184,66 @@ public class NewMainMenu extends SinglAbstractFragmentActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.in_memu1:
-                try {
-                    List<File> listFile = Arrays.asList(directory.listFiles());
-                    for (int i = 0; i < listFile.size(); i++) {
-                        Boolean flag = true;
-                        AllCollectBaseThread allCollectBaseThread = new AllCollectBaseThread("All", getApplicationContext());
-                        allCollectBaseThread.mThread.join();
-                        listAssembling = allCollectBaseThread.getAssemblingsAll();
-                        int count = listAssembling.size();
-                        for (int h = 0; h < listAssembling.size(); h++) {
-                            if (listAssembling.get(h).assembling.equals(listFile.get(i).getName().replace(".xls", ""))) {
-                                flag = false;
-                            }
-                        }
-                        if (flag) {
-                            File filePath = listFile.get(i).getAbsoluteFile();
-                            FileInputStream fis = new FileInputStream(filePath);
-                            HSSFWorkbook myExcelBook = new HSSFWorkbook(fis);
-                            InsertCollectBaseThread insertCollectBaseThread = new InsertCollectBaseThread("InsertCollect", getApplicationContext(), null, filePath.getName().replace(".xls", ""), null);
-                            insertCollectBaseThread.mThread.join();
-                            Iterator<Sheet> sheetIterator = myExcelBook.sheetIterator();
-                            while (sheetIterator.hasNext()) {
-                                Sheet mySheet = sheetIterator.next();
-                                UpdateCollectBaseThread updateCollectBaseThread = new UpdateCollectBaseThread("Update", getApplicationContext(), (long) count, null, null, mySheet.getSheetName());
-                                updateCollectBaseThread.mThread.join();
-                                Iterator<Row> rowIterator = mySheet.rowIterator();
-                                while (rowIterator.hasNext()) {
-                                    Row myRow = rowIterator.next();
-                                    if (myRow.getCell(0).getCellType() == CellType.STRING) {
-                                        InsertQuestionsBaseThread insertQuestionsBaseThread1 = new InsertQuestionsBaseThread("InsertQuestion", getApplicationContext(), (long) count, (long) myExcelBook.getSheetIndex(mySheet.getSheetName()), myRow.getCell(0).getStringCellValue(), myRow.getCell(1).getStringCellValue());
-                                        insertQuestionsBaseThread1.mThread.join();
-                                    } else {
-                                        InsertQuestionsBaseThread insertQuestionsBaseThread1 = new InsertQuestionsBaseThread("InsertQuestion", getApplicationContext(), (long) count, (long) myExcelBook.getSheetIndex(mySheet.getSheetName()), String.valueOf(myRow.getCell(0).getNumericCellValue()), String.valueOf(myRow.getCell(1).getNumericCellValue()));
-                                        insertQuestionsBaseThread1.mThread.join();
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            List<File> listFile = Arrays.asList(directory.listFiles());
+                            for (int i = 0; i < listFile.size(); i++) {
+                                Boolean flag = true;
+                                AllCollectBaseThread allCollectBaseThread = new AllCollectBaseThread("All", getApplicationContext());
+                                allCollectBaseThread.mThread.join();
+                                listAssembling = allCollectBaseThread.getAssemblingsAll();
+                                int count = listAssembling.size();
+                                for (int h = 0; h < listAssembling.size(); h++) {
+                                    if (listAssembling.get(h).assembling.equals(listFile.get(i).getName().replace(".xls", ""))) {
+                                        flag = false;
                                     }
                                 }
+                                if (flag) {
+                                    File filePath = listFile.get(i).getAbsoluteFile();
+                                    FileInputStream fis = new FileInputStream(filePath);
+                                    HSSFWorkbook myExcelBook = new HSSFWorkbook(fis);
+                                    InsertCollectBaseThread insertCollectBaseThread = new InsertCollectBaseThread("InsertCollect", getApplicationContext(), null, filePath.getName().replace(".xls", ""), null);
+                                    insertCollectBaseThread.mThread.join();
+                                    Iterator<Sheet> sheetIterator = myExcelBook.sheetIterator();
+                                    while (sheetIterator.hasNext()) {
+                                        Sheet mySheet = sheetIterator.next();
+                                        UpdateCollectBaseThread updateCollectBaseThread = new UpdateCollectBaseThread("Update", getApplicationContext(), (long) count, null, null, mySheet.getSheetName());
+                                        updateCollectBaseThread.mThread.join();
+                                        Iterator<Row> rowIterator = mySheet.rowIterator();
+                                        while (rowIterator.hasNext()) {
+                                            Row myRow = rowIterator.next();
+                                            if (myRow.getCell(0).getCellType() == CellType.STRING) {
+                                                InsertQuestionsBaseThread insertQuestionsBaseThread1 = new InsertQuestionsBaseThread("InsertQuestion", getApplicationContext(), (long) count, (long) myExcelBook.getSheetIndex(mySheet.getSheetName()), myRow.getCell(0).getStringCellValue(), myRow.getCell(1).getStringCellValue());
+                                                insertQuestionsBaseThread1.mThread.join();
+                                            } else {
+                                                InsertQuestionsBaseThread insertQuestionsBaseThread1 = new InsertQuestionsBaseThread("InsertQuestion", getApplicationContext(), (long) count, (long) myExcelBook.getSheetIndex(mySheet.getSheetName()), String.valueOf(myRow.getCell(0).getNumericCellValue()), String.valueOf(myRow.getCell(1).getNumericCellValue()));
+                                                insertQuestionsBaseThread1.mThread.join();
+                                            }
+                                        }
+                                    }
+                                    myExcelBook.close();
+                                }
                             }
-                            myExcelBook.close();
+                        } catch (IOException | InterruptedException e) {
+                            e.printStackTrace();
+
+                        }
+
+                        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.list_tests);
+                        Log.i("Fragment: " , fragment.toString());
+                        Fragment fragment2 = getSupportFragmentManager().findFragmentById(R.id.select_user);
+                        FragmentManager fragmentManager= getSupportFragmentManager();
+                        if(fragment2 != null) {
+                            fragmentManager.beginTransaction().remove(fragment2).add(R.id.select_user,new SelectCollectFragment()).commit();
+                            fragmentManager.beginTransaction().remove(fragment).add(R.id.list_tests,new ListThemeFragment()).commit();//здесь обновляется
+                        } else {
+                            fragmentManager.beginTransaction().remove(fragment).add(R.id.list_tests,new CreateCollectFragment()).commit();
                         }
                     }
-                } catch (IOException | InterruptedException e) {
-                    e.printStackTrace();
-
-                }
-
-                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.list_tests);
-                Log.i("Fragment: " , fragment.toString());
-                Fragment fragment2 = getSupportFragmentManager().findFragmentById(R.id.select_user);
-                FragmentManager fragmentManager= getSupportFragmentManager();
-                if(fragment2 != null) {
-                    fragmentManager.beginTransaction().remove(fragment2).add(R.id.select_user,new SelectCollectFragment()).commit();
-                    fragmentManager.beginTransaction().remove(fragment).add(R.id.list_tests,new ListThemeFragment()).commit();//здесь обновляется
-                } else {
-                    fragmentManager.beginTransaction().remove(fragment).add(R.id.list_tests,new CreateCollectFragment()).commit();
-                }
-
+                });
+                thread.start();
                 break;
             case R.id.in_menu2:
                 AllCleanAssemblingBaseThread AllCleanAssemblingBaseThread = new AllCleanAssemblingBaseThread("CleanAssembling", getApplicationContext());

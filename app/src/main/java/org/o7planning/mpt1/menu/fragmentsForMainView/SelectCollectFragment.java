@@ -60,6 +60,7 @@ public class SelectCollectFragment extends Fragment {
         }
 
         if(mAssemblingList.size() == 0) {
+            collectTheme.clear();
             ListThemeFragment.getThemeList(collectTheme, 0, "");//Передать sThrme в ListThemeFragment
         }
 
@@ -68,10 +69,12 @@ public class SelectCollectFragment extends Fragment {
         selectCollect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ListThemeFragment.getThemeList(mCollect.get(i), i, mAssemblingList.get(i).assembling);//Передать sThrme в ListThemeFragment
-                Fragment fragment1 = getActivity().getSupportFragmentManager().findFragmentById(R.id.list_tests);
-                FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
-                fragmentManager1.beginTransaction().remove(fragment1).add(R.id.list_tests,new ListThemeFragment()).commit();
+                if(mCollect.get(i).size() != 0) {
+                    ListThemeFragment.getThemeList(mCollect.get(i), i, mAssemblingList.get(i).assembling);//Передать sThrme в ListThemeFragment
+                    Fragment fragment1 = getActivity().getSupportFragmentManager().findFragmentById(R.id.list_tests);
+                    FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
+                    fragmentManager1.beginTransaction().remove(fragment1).add(R.id.list_tests,new ListThemeFragment()).commit();
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
