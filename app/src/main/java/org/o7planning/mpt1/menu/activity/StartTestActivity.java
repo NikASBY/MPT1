@@ -148,30 +148,4 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
     public static void setTotalNumber(Integer totalNumber) {
         StartTestActivity.totalNumber = totalNumber;
     }
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_exit_test,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.exit_test:
-                if(!getCheckQuestion()) {
-                    Intent intent1 = new Intent(StartTestActivity.this, ResultTestActivity.class);
-                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent1);
-                } else {
-                    Intent intent1 = new Intent(StartTestActivity.this, ResultTestActivity.class);
-                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent1);
-                }
-
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 }

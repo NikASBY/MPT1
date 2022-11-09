@@ -28,7 +28,6 @@ public class SettingTestActivity extends AppCompatActivity {
     private TextView titleListAnswer;
     private CheckBox randomQuestions;
 
-
     private String nameCollect;
     private String nameTheme;
     private List<String> listQuestion;
@@ -36,8 +35,6 @@ public class SettingTestActivity extends AppCompatActivity {
 
     private int contCollect;
     private int contTheme;
-
-
 
     private static boolean checkQuestion;
     private int lineNext = 0;
@@ -55,6 +52,7 @@ public class SettingTestActivity extends AppCompatActivity {
         contTheme = getIntent().getIntExtra("contTheme", 0);
         nameCollect = getIntent().getStringExtra( "nameCollect");
         nameTheme = getIntent().getStringExtra("nameTheme");
+        checkQuestion = getIntent().getBooleanExtra("checkQuestion", false);
 
         allQuestionsBaseThread = new AllQuestionsBaseThread("AllQuestion",getApplicationContext());
         try {
@@ -89,14 +87,15 @@ public class SettingTestActivity extends AppCompatActivity {
         titleNameTheme.setText(nameTheme);
 
         randomQuestions = (CheckBox) findViewById(R.id.random_drop_of_questions);
+        if(checkQuestion == true) {
+            randomQuestions.setChecked(true);
+        }
         randomQuestions.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 checkQuestion = b;
             }
         });
-
-
 
         buttonOk = (Button) findViewById(R.id.button_ok);
         buttonOk.setOnClickListener(new View.OnClickListener() {

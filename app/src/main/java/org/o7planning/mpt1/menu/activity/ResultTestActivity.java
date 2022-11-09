@@ -24,12 +24,14 @@ public class ResultTestActivity extends AppCompatActivity {
     private TextView totalTextQuestion;
     private TextView rightTextAnswer;
 
+    private boolean checkQuestion;
     private String nameTheme;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result_test_fragment);
+        checkQuestion = getIntent().getBooleanExtra("checkQuestion1", false);
 
         nameTextTheme = (TextView) findViewById(R.id.name_theme);
         nameTheme = StartTestActivity.getNameTheme();
@@ -60,6 +62,7 @@ public class ResultTestActivity extends AppCompatActivity {
                 intent2.putExtra("nameTheme", nameTheme);
                 intent2.putExtra("contTheme", getIntent().getIntExtra("contTheme",0));
                 intent2.putExtra("contCollect", getIntent().getIntExtra("contCollect",0));
+                intent2.putExtra("checkQuestion", checkQuestion);
                 intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent2);
