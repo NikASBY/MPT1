@@ -2,17 +2,11 @@ package org.o7planning.mpt1.menu.fragmentsForMainView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Message;
-import android.os.health.TimerStat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,13 +19,9 @@ import org.o7planning.mpt1.menu.activity.ResultTestActivity;
 import org.o7planning.mpt1.menu.activity.StartTestActivity;
 import org.o7planning.mpt1.thread.AllQuestionsBaseThread;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 public class StartTest_fragment_v2 extends Fragment {
 
@@ -41,6 +31,7 @@ public class StartTest_fragment_v2 extends Fragment {
     private TextView titleText;
     private TextView totalText;
     private TextView rightText;
+    private ImageButton buttonBack;
 
 
     private AllQuestionsBaseThread allQuestionsBaseThread;
@@ -342,6 +333,33 @@ public class StartTest_fragment_v2 extends Fragment {
                 }
             });
         }
+        buttonBack = (ImageButton) view.findViewById(R.id.button_back_test);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkQuestion == true) {
+                    Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
+                    intent1.putExtra("totalNumber", totalNumber);
+                    intent1.putExtra("right_answer", right);
+                    intent1.putExtra("contTheme", contTheme);
+                    intent1.putExtra("contCollect", contCollect);
+                    intent1.putExtra("checkQuestion1", checkQuestion);
+                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent1);
+                } else {
+                    Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
+                    intent1.putExtra("totalNumber", totalNumber);
+                    intent1.putExtra("right_answer", right);
+                    intent1.putExtra("contTheme", contTheme);
+                    intent1.putExtra("contCollect", contCollect);
+                    intent1.putExtra("checkQuestion1", checkQuestion);
+                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent1);
+                }
+            }
+        });
         return view;
     }
 
