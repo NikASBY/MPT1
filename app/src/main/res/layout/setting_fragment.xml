@@ -64,23 +64,41 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/container_new_visual_theme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </FrameLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10sp"
+        android:text="Выбор языка приложения"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/save_setting"
+        android:id="@+id/load_base"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/style_button"
         android:gravity="center"
         android:minHeight="48dp"
-        android:text="ПРИМЕНИТЬ"
+        android:text="@string/load_file"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/clear_base"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_button"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/clean_base"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
-
+    <FrameLayout
+        android:id="@+id/container_new_visual_theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
