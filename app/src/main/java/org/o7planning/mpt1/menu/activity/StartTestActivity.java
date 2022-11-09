@@ -1,19 +1,14 @@
 package org.o7planning.mpt1.menu.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Questions;
 import org.o7planning.mpt1.menu.fragmentsForMainView.ProgressBarFragment;
-import org.o7planning.mpt1.menu.fragmentsForMainView.ResultTest;
-import org.o7planning.mpt1.menu.fragmentsForMainView.StartTest_fragment;
+import org.o7planning.mpt1.menu.fragmentsForMainView.StartTest_fragment_v2;
 import org.o7planning.mpt1.thread.AllQuestionsBaseThread;
 import org.o7planning.mpt1.viewBaseData.SinglAbstractFragmentActivity;
 
@@ -45,7 +40,7 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
 
     @Override
     public Fragment getFragment2() {
-        return new StartTest_fragment();
+        return new StartTest_fragment_v2();
     }
 
     @Override
