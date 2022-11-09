@@ -143,30 +143,39 @@ public class NewMainMenu extends SinglAbstractFragmentActivity {
             e.printStackTrace();
         }
         settingssList = allSettingsThread.getSettingsAll();
-        changeLangRu = settingssList.get(0).changeLangRu;
-        changeLangEn = settingssList.get(0).changeLangEn;
+        if(settingssList.size() == 1) {
+            changeLangRu = settingssList.get(0).changeLangRu;
+            changeLangEn = settingssList.get(0).changeLangEn;
+            if(changeLangRu) {
+                InsertSettingsThread insertSettingsThread = new InsertSettingsThread("insert_base_lang", getApplicationContext(), true, false);
+                locale = new Locale("ru");
+                Locale.setDefault(locale);
+                configuration = new Configuration();
+                configuration.setLocale(locale);
+                getBaseContext().getResources().updateConfiguration(configuration, null);
+                getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ListThemeFragment()).replace(R.id.select_user, new SelectCollectFragment()).commit();
+                Log.i("(NewMainMenu) Lang: ", locale.getLanguage());
+            } else {
+                InsertSettingsThread insertSettingsThread = new InsertSettingsThread("insert_base_lang", getApplicationContext(), false, true);
+                locale = new Locale("en");
+                Locale.setDefault(locale);
+                configuration = new Configuration();
+                configuration.setLocale(locale);
+                getBaseContext().getResources().updateConfiguration(configuration, null);
+                getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ListThemeFragment()).replace(R.id.select_user, new SelectCollectFragment()).commit();
+                Log.i("(NewMainMenu) Lang: ", locale.getLanguage());
+            }
+        }
 
-
-        if(changeLangRu) {
-            InsertSettingsThread insertSettingsThread = new InsertSettingsThread("insert_base_lang", getApplicationContext(), true, false);
-            locale = new Locale("ru");
-            Locale.setDefault(locale);
-            configuration = new Configuration();
-            configuration.setLocale(locale);
-            getBaseContext().getResources().updateConfiguration(configuration, null);
-            getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ListThemeFragment()).replace(R.id.select_user, new SelectCollectFragment()).commit();
-            Log.i("(NewMainMenu) Lang: ", locale.getLanguage());
-        } else {
+        if(changeLangRu == null && changeLangEn == null) {
             InsertSettingsThread insertSettingsThread = new InsertSettingsThread("insert_base_lang", getApplicationContext(), false, true);
             locale = new Locale("en");
             Locale.setDefault(locale);
             configuration = new Configuration();
             configuration.setLocale(locale);
             getBaseContext().getResources().updateConfiguration(configuration, null);
-            getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ListThemeFragment()).replace(R.id.select_user, new SelectCollectFragment()).commit();
-            Log.i("(NewMainMenu) Lang: ", locale.getLanguage());
+            Log.i("(StartAppSetting) Lang: ", locale.getLanguage());
         }
-
 
         fragmentManager2 = getSupportFragmentManager();
         listTests = new ListThemeFragment();

@@ -36,7 +36,6 @@ public class ChangeLangSettingFragment extends Fragment {
     private Boolean changeLangRu;
     private Boolean changeLangEn;
 
-    private InsertSettingsThread insertSettingsThread;
     private AllSettingsThread allSettingsThread;
     private UpdateSettingssThread updateSettingssThread;
 
@@ -82,6 +81,8 @@ public class ChangeLangSettingFragment extends Fragment {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+                        getActivity().getBaseContext().getResources().updateConfiguration(configuration, null);
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ChangeLangSettingFragment()).commit();
                         break;
                     case R.id.radioButtonEnglish:
                         locale = new Locale("en");
@@ -94,6 +95,8 @@ public class ChangeLangSettingFragment extends Fragment {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+                        getActivity().getBaseContext().getResources().updateConfiguration(configuration, null);
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ChangeLangSettingFragment()).commit();
                         break;
                 }
             }
@@ -103,8 +106,7 @@ public class ChangeLangSettingFragment extends Fragment {
         buttonSaveSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getBaseContext().getResources().updateConfiguration(configuration, null);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ChangeLangSettingFragment()).commit();
+
             }
         });
 

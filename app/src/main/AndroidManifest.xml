@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MPT1">
         <activity
-            android:name=".menu.activity.StartApplicationSettingActivity"
+            android:name=".menu.activity.NewMainMenu"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,6 @@
         <activity android:name=".viewBaseData.CollectRecycler"/>
         <activity android:name=".menu.activity.SettingTestActivity"/>
         <activity android:name=".menu.activity.StartTestActivity"/>
-        <activity android:name=".menu.activity.NewMainMenu"/>
         <activity android:name=".menu.activity.ResultTestActivity"/>
     </application>
 
