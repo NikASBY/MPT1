@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Setting Test"
+        android:text="@string/test_Setup"
         android:textColor="@color/black"
         android:gravity="center"
         android:textSize="24sp"/>
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Name Collect"
+        android:text="@string/collection_name"
         android:textSize="16sp"
         android:textColor="@color/black"/>
 
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Name Theme"
+        android:text="@string/name_theme"
         android:textSize="16sp"
         android:textColor="@color/black"/>
 
@@ -53,7 +53,7 @@
         android:id="@+id/random_drop_of_questions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Random drop of questions" />
+        android:text="@string/random_drop_of_questions" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:text="Back"
+            android:text="@string/back"
             android:layout_weight="1"/>
 
         <Button
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Ok"
+            android:text="@string/start_the_test"
             android:layout_weight="1"/>
     </LinearLayout>
 

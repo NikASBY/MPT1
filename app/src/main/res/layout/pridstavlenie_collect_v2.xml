@@ -21,7 +21,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Theme №"
+            android:text="@string/theme_n"
             android:layout_weight="3"/>
 
         <LinearLayout
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name Theme"
+                android:text="@string/name_theme"
                 android:textColor="@color/black"
                 android:textSize="24dp" />
 
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="count theme" />
+                android:text="@string/count_question" />
         </LinearLayout>
 
     </LinearLayout>

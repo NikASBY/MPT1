@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="10sp"
-            android:text="Выбор языка приложения"
+            android:text="@string/choosing_the_application_language"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="10sp"
-        android:text="Выбор языка приложения"
+        android:text="@string/loading_the_database"
         android:textColor="@color/black"
         android:textSize="16sp" />
 

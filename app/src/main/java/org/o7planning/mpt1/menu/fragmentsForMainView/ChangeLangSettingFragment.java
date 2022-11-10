@@ -2,7 +2,6 @@ package org.o7planning.mpt1.menu.fragmentsForMainView;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -106,6 +105,7 @@ public class ChangeLangSettingFragment extends Fragment {
                         }
                         getActivity().getBaseContext().getResources().updateConfiguration(configuration, null);
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ChangeLangSettingFragment()).commit();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_panel_conteiner, new HomePanelFragment()).commit();
                         break;
                     case R.id.radioButtonEnglish:
                         locale = new Locale("en");
@@ -120,6 +120,7 @@ public class ChangeLangSettingFragment extends Fragment {
                         }
                         getActivity().getBaseContext().getResources().updateConfiguration(configuration, null);
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.list_tests, new ChangeLangSettingFragment()).commit();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_panel_conteiner, new HomePanelFragment()).commit();
                         break;
                 }
             }

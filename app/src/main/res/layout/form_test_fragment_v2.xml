@@ -41,17 +41,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="totalNumber"
-            android:gravity="center"/>
+            android:text="@string/total_number"
+            android:gravity="center"
+            android:textSize="10dp"/>
 
         <TextView
             android:id="@+id/right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="right"
+            android:text="@string/number_of_correct_answers"
             android:textColor="@color/Green"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textSize="10dp"/>
 
     </LinearLayout>
 

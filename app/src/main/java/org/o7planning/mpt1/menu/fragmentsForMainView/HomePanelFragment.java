@@ -15,7 +15,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import org.o7planning.mpt1.Dialog.AboutFragment;
-import org.o7planning.mpt1.Dialog.SettingFragment;
 import org.o7planning.mpt1.R;
 
 public class HomePanelFragment extends Fragment {

@@ -43,7 +43,7 @@
                     android:background="@drawable/style_button"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:text="ДОБАВИТЬ НОВУЮ КОЛЛЕКЦИЮ"
+                    android:text="@string/add_a_new_collection"
                     android:minHeight="48dp"
                     android:gravity="center"/>
 
@@ -62,7 +62,7 @@
                     android:background="@drawable/style_button"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:text="ПЕРЕЙТИ К ДОБАВЛЕНИЮ ТЕМ"
+                    android:text="@string/go_to_adding_themes"
                     android:minHeight="48dp"
                     android:gravity="center"/>
             </LinearLayout>
@@ -86,7 +86,7 @@
                         android:background="@drawable/style_button"
                         android:textColor="@color/white"
                         android:textSize="16sp"
-                        android:text="ПРОСМОТРЕТЬ КОЛЛЕКЦИЮ"
+                        android:text="@string/view_the_collection"
                         android:minHeight="48dp"
                         android:gravity="center"/>
                 </LinearLayout>
@@ -109,7 +109,7 @@
                 android:id="@+id/version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Версия" />
+                android:text="@string/version" />
         </LinearLayout>
 
     </LinearLayout>

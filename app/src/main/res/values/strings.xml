@@ -22,4 +22,28 @@
     <string name="clean_base">Очистить базу данных</string>
     <string name="exit_test">Закончить тест</string>
     <string name="setting_application">НАСТРОЙКИ ПРИЛОЖЕНИЯ</string>
+
+    <string name="add_a_new_collection">ДОБАВИТЬ НОВУЮ КОЛЛЕКЦИЮ</string>
+    <string name="go_to_adding_themes">ПЕРЕЙТИ К ДОБАВЛЕНИЮ ТЕМ</string>
+    <string name="view_the_collection">ПРОСМОТРЕТЬ КОЛЛЕКЦИЮ</string>
+    <string name="total_number">Общее количество вопросов:</string>
+    <string name="number_of_correct_answers">Количество правильных ответов:</string>
+    <string name="theme_n">ТЕМА №</string>
+    <string name="count_question">Количество вопросов:</string>
+    <string name="name_theme">Название темы:</string>
+    <string name="select_theme">ВЫБРАТЬ ТЕМУ</string>
+    <string name="repeat_theme">ПОВТОРИТЬ ТЕМУ</string>
+
+    <string name="choosing_the_application_language">Выбор языка приложения</string>
+    <string name="loading_the_database">Загрузка базы</string>
+    <string name="test_Setup">Настройка теста</string>
+    <string name="collection_name">Название коллекции:</string>
+    <string name="random_drop_of_questions">Случайное выпадение вопросов</string>
+
+    <string name="back">Назад</string>
+    <string name="start_the_test">Начать тест</string>
+    <string name="home">На главную</string>
+    <string name="create">Создать</string>
+    <string name="setting">Настройки</string>
+    <string name="information">Информация</string>
 </resources>

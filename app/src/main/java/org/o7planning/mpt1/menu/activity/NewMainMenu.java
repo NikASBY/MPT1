@@ -7,43 +7,22 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.o7planning.mpt1.Dialog.AboutFragment;
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Assembling;
 import org.o7planning.mpt1.database.Settingss;
-import org.o7planning.mpt1.menu.fragmentsForMainView.ChangeLangSettingFragment;
-import org.o7planning.mpt1.menu.fragmentsForMainView.CreateCollectFragment;
 import org.o7planning.mpt1.menu.fragmentsForMainView.HomePanelFragment;
 import org.o7planning.mpt1.menu.fragmentsForMainView.ListThemeFragment;
 import org.o7planning.mpt1.menu.fragmentsForMainView.SelectCollectFragment;
-import org.o7planning.mpt1.thread.AllCleanAssemblingBaseThread;
-import org.o7planning.mpt1.thread.AllCleanQuestionBaseThread;
-import org.o7planning.mpt1.thread.AllCollectBaseThread;
 import org.o7planning.mpt1.thread.AllSettingsThread;
-import org.o7planning.mpt1.thread.InsertCollectBaseThread;
-import org.o7planning.mpt1.thread.InsertQuestionsBaseThread;
 import org.o7planning.mpt1.thread.InsertSettingsThread;
-import org.o7planning.mpt1.thread.UpdateCollectBaseThread;
 import org.o7planning.mpt1.viewBaseData.SinglAbstractFragmentActivity;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
