@@ -63,9 +63,6 @@ public class CreateCollectFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-        mVersion = (TextView) view.findViewById(R.id.version);
-        mVersion.setText(BuildConfig.VERSION_NAME);
         return view;
     }
 }

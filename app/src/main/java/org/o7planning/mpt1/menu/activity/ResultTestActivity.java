@@ -59,6 +59,7 @@ public class ResultTestActivity extends AppCompatActivity {
                 intent2.putExtra("contTheme", getIntent().getIntExtra("contTheme",0));
                 intent2.putExtra("contCollect", getIntent().getIntExtra("contCollect",0));
                 intent2.putExtra("checkQuestion", checkQuestion);
+                intent2.putExtra("nameCollect", getIntent().getStringExtra("nameCollect"));
                 intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent2);

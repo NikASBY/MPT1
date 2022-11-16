@@ -28,6 +28,7 @@ public class SettingTestActivity extends AppCompatActivity {
     private TextView titleListAnswer;
     private CheckBox randomQuestions;
 
+
     private String nameCollect;
     private String nameTheme;
     private List<String> listQuestion;
@@ -107,6 +108,7 @@ public class SettingTestActivity extends AppCompatActivity {
                 intentButtonOk.putExtra("checkQuestion", checkQuestion);
                 intentButtonOk.putExtra("line", lineNext);
                 intentButtonOk.putExtra("nameTheme", nameTheme);
+                intentButtonOk.putExtra("nameCollect", nameCollect);
                 intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
