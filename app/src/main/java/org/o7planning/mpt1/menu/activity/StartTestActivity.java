@@ -30,6 +30,12 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
     private static int line;
     private static String nameTheme;
 
+    public static String getNameCollect() {
+        return nameCollect;
+    }
+
+    private static String nameCollect;
+
     private static Integer right = 0;
     private static Integer totalNumber = 0;
 
@@ -95,6 +101,7 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
         checkQuestion = getIntent().getBooleanExtra("checkQuestion", false);
         line = getIntent().getIntExtra("line", 0);
         nameTheme = getIntent().getStringExtra("nameTheme");
+        nameCollect = getIntent().getStringExtra("nameCollect");
     }
 
     public static String getNameTheme() {

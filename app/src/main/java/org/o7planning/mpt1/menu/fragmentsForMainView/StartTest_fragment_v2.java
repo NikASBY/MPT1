@@ -263,11 +263,15 @@ public class StartTest_fragment_v2 extends Fragment {
                         fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
                         fragmentManager3.beginTransaction().replace(R.id.progressBar_test_container, new ProgressBarFragment()).commit();
                     } else {
+                        if (radioButton1.getText().equals(answer)) {
+                            right = right + 1;
+                        }
                         Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
                         intent1.putExtra("totalNumber", totalNumber + 1);
                         intent1.putExtra("right_answer", right);
                         intent1.putExtra("contTheme", contTheme);
                         intent1.putExtra("contCollect", contCollect);
+                        intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
@@ -292,11 +296,15 @@ public class StartTest_fragment_v2 extends Fragment {
                         fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
                         fragmentManager3.beginTransaction().replace(R.id.progressBar_test_container, new ProgressBarFragment()).commit();
                     } else {
+                        if (radioButton1.getText().equals(answer)) {
+                            right = right + 1;
+                        }
                         Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
                         intent1.putExtra("totalNumber", totalNumber + 1);
                         intent1.putExtra("right_answer", right);
                         intent1.putExtra("contTheme", contTheme);
                         intent1.putExtra("contCollect", contCollect);
+                        intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
@@ -321,11 +329,15 @@ public class StartTest_fragment_v2 extends Fragment {
                         fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
                         fragmentManager3.beginTransaction().replace(R.id.progressBar_test_container, new ProgressBarFragment()).commit();
                     } else {
+                        if (radioButton1.getText().equals(answer)) {
+                            right = right + 1;
+                        }
                         Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
                         intent1.putExtra("totalNumber", totalNumber + 1);
                         intent1.putExtra("right_answer", right);
                         intent1.putExtra("contTheme", contTheme);
                         intent1.putExtra("contCollect", contCollect);
+                        intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
@@ -344,6 +356,7 @@ public class StartTest_fragment_v2 extends Fragment {
                     intent1.putExtra("contTheme", contTheme);
                     intent1.putExtra("contCollect", contCollect);
                     intent1.putExtra("checkQuestion1", checkQuestion);
+                    intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                     intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent1);
@@ -354,6 +367,7 @@ public class StartTest_fragment_v2 extends Fragment {
                     intent1.putExtra("contTheme", contTheme);
                     intent1.putExtra("contCollect", contCollect);
                     intent1.putExtra("checkQuestion1", checkQuestion);
+                    intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                     intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent1);

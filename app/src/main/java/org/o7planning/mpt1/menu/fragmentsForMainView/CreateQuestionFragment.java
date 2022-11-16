@@ -145,8 +145,6 @@ public class CreateQuestionFragment extends Fragment {
             }
         });
 
-        mVersion = (TextView) view.findViewById(R.id.version);
-        mVersion.setText(BuildConfig.VERSION_NAME);
         viewQuestion = (TextView)  view.findViewById(R.id.view_questions);
         viewQuestion.setOnClickListener(new View.OnClickListener() {
             @Override

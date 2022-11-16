@@ -99,8 +99,6 @@ public class CreateThemeFragment extends Fragment {
                 fragmentManager1.beginTransaction().remove(fragment1).add(R.id.list_tests,new CreateQuestionFragment()).commit();
             }
         });
-        mVersion = (TextView) view.findViewById(R.id.version);
-        mVersion.setText(BuildConfig.VERSION_NAME);
         return view;
     }
 }
