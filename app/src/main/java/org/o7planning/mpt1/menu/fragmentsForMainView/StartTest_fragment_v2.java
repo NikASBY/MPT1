@@ -14,9 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import org.o7planning.mpt1.R;
+import org.o7planning.mpt1.database.Progress;
 import org.o7planning.mpt1.database.Questions;
 import org.o7planning.mpt1.menu.activity.ResultTestActivity;
 import org.o7planning.mpt1.menu.activity.StartTestActivity;
+import org.o7planning.mpt1.thread.progress.AllProgressBaseThread;
+import org.o7planning.mpt1.thread.progress.UpdateProgressBaseThread;
 import org.o7planning.mpt1.thread.question.AllQuestionsBaseThread;
 
 import java.util.ArrayList;
@@ -33,6 +36,9 @@ public class StartTest_fragment_v2 extends Fragment {
     private TextView rightText;
     private ImageButton buttonBack;
 
+    private List<Progress> progressList;
+    private AllProgressBaseThread allProgressBaseThread;
+    private int line;
 
     private AllQuestionsBaseThread allQuestionsBaseThread;
 
@@ -79,8 +85,6 @@ public class StartTest_fragment_v2 extends Fragment {
         return totalQuestion;
     }
 
-
-
     private int progressStatus = 0;
 
     @Nullable
@@ -89,148 +93,132 @@ public class StartTest_fragment_v2 extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.form_test_fragment_v2,container,false);
 
-
         radioButton1 = (TextView) view.findViewById(R.id.radioButton);
         radioButton2 = (TextView) view.findViewById(R.id.radioButton2);
         radioButton3 = (TextView) view.findViewById(R.id.radioButton3);
         totalText = (TextView) view.findViewById(R.id.totalNumber);
         rightText = (TextView) view.findViewById(R.id.right);
 
-        //List<Questions> questionsList
-        allQuestionsBaseThread = new AllQuestionsBaseThread("Question2", getContext());
+        allProgressBaseThread = new AllProgressBaseThread("AllProgress", getContext());
         try {
-            allQuestionsBaseThread.mThread.join();
+            allProgressBaseThread.mThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        questionsList = allQuestionsBaseThread.getQuestionsAll();
+        progressList = allProgressBaseThread.getProgressAll();
 
-        contCollect = StartTestActivity.getContCollect();
-        contTheme = StartTestActivity.getContTheme();
         checkQuestion = StartTestActivity.getCheckQuestion();
 
         if(checkQuestion == true) {
-            if(questionsList.size() != 0) {
-                //Формирую листы вопросов и ответов по выбранной теме
-                //List<String> qStrings
-                //List<String> aStrings
-                for(int i = 0; i<questionsList.size(); i++) {
-                    if(questionsList.get(i).uidCollect == contCollect && questionsList.get(i).uidTheme == contTheme) {
-                        qStrings.add(questionsList.get(i).questions);
-                        aStrings.add(questionsList.get(i).answers);
+            if(progressList.size() != 0) {
+                    for(int i = 0; i < progressList.size(); i++) {
+                        qStrings.add(progressList.get(i).questions);
+                        aStrings.add(progressList.get(i).answers);
                     }
-                }
-                totalQuestion = qStrings.size();
-                //Questions questions
-                int rand = (int) (Math.random()*qStrings.size());
 
-                questions = qStrings.get(rand);
-                answer = aStrings.get(rand);
-                titleText = (TextView) view.findViewById(R.id.question);
-                titleText.setText(questions);
+                    totalQuestion = qStrings.size();
+                    //Questions questions
+                    int rand = (int) (Math.random()*qStrings.size());
 
-                do {
+                    questions = qStrings.get(rand);
+                    answer = aStrings.get(rand);
+                    titleText = (TextView) view.findViewById(R.id.question);
+                    titleText.setText(questions);
+
                     do {
-                        i1 = new Random().nextInt(aStrings.size());
-                        i2 = new Random().nextInt(aStrings.size());
-                        i3 = new Random().nextInt(aStrings.size());
-                    } while (!(i1 != i2 && i1 != i3 && i2 != i3));
-                } while (!(rand != i1 && rand != i2 && rand != i3));
+                        do {
+                            i1 = new Random().nextInt(aStrings.size());
+                            i2 = new Random().nextInt(aStrings.size());
+                            i3 = new Random().nextInt(aStrings.size());
+                        } while (!(i1 != i2 && i1 != i3 && i2 != i3));
+                    } while (!(rand != i1 && rand != i2 && rand != i3));
 
-                radioButton1.setText(aStrings.get(i1));
-                radioButton2.setText(aStrings.get(i2));
-                radioButton3.setText(aStrings.get(i3));
-                //radioButton1.setBackground(getResources().getDrawable(R.drawable.right_qnswer));
+                    radioButton1.setText(aStrings.get(i1));
+                    radioButton2.setText(aStrings.get(i2));
+                    radioButton3.setText(aStrings.get(i3));
+                    //radioButton1.setBackground(getResources().getDrawable(R.drawable.right_qnswer));
 
-                randomQ = new Random().nextInt(3);
-                switch (randomQ) {
-                    case 0:
-                        radioButton1.setText(answer);
-                        break;
-                    case 1:
-                        radioButton2.setText(answer);
-                        break;
-                    case 2:
-                        radioButton3.setText(answer);
-                        break;
-                }
-
-                right = StartTestActivity.getRight();
-                totalNumber = StartTestActivity.getTotalNumber();
-
-                totalText.setText("Total answer = " + totalNumber.toString());
-                rightText.setText("Right answer = " + right.toString());
-
-                radioButton1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(radioButton1.getText().equals(answer)){
-                            right = right + 1;
-                        }
-                        totalNumber = totalNumber + 1;
-                        StartTestActivity.setContCollect(contCollect);
-                        StartTestActivity.setContTheme(contTheme);
-                        StartTestActivity.setCheckQuestion(checkQuestion);
-                        StartTestActivity.setTotalNumber(totalNumber);
-                        StartTestActivity.setRight(right);
-                        FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
-                        fragmentManager1.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
+                    randomQ = new Random().nextInt(3);
+                    switch (randomQ) {
+                        case 0:
+                            radioButton1.setText(answer);
+                            break;
+                        case 1:
+                            radioButton2.setText(answer);
+                            break;
+                        case 2:
+                            radioButton3.setText(answer);
+                            break;
                     }
-                });
 
-                radioButton2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(radioButton2.getText().equals(answer)){
-                            right = right + 1;
-                        }
-                        totalNumber = totalNumber + 1;
-                        StartTestActivity.setContCollect(contCollect);
-                        StartTestActivity.setContTheme(contTheme);
-                        StartTestActivity.setCheckQuestion(checkQuestion);
-                        StartTestActivity.setTotalNumber(totalNumber);
-                        StartTestActivity.setRight(right);
-                        FragmentManager fragmentManager2 = getActivity().getSupportFragmentManager();
-                        fragmentManager2.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
-                    }
-                });
+                    right = StartTestActivity.getRight();
+                    totalNumber = StartTestActivity.getTotalNumber();
 
-                radioButton3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(radioButton3.getText().equals(answer)){
-                            right = right + 1;
+                    totalText.setText("Total answer = " + totalNumber.toString());
+                    rightText.setText("Right answer = " + right.toString());
+
+                    radioButton1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(radioButton1.getText().equals(answer)){
+                                right = right + 1;
+                            }
+                            totalNumber = totalNumber + 1;
+                            StartTestActivity.setTotalNumber(totalNumber);
+                            StartTestActivity.setCheckQuestion(checkQuestion);
+                            StartTestActivity.setRight(right);
+                            FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
+                            fragmentManager1.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
                         }
-                        totalNumber = totalNumber + 1;
-                        StartTestActivity.setContCollect(contCollect);
-                        StartTestActivity.setContTheme(contTheme);
-                        StartTestActivity.setCheckQuestion(checkQuestion);
-                        StartTestActivity.setTotalNumber(totalNumber);
-                        StartTestActivity.setRight(right);
-                        FragmentManager fragmentManager3 = getActivity().getSupportFragmentManager();
-                        fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
-                    }
-                });
+                    });
+
+                    radioButton2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(radioButton2.getText().equals(answer)){
+                                right = right + 1;
+                            }
+                            totalNumber = totalNumber + 1;
+                            StartTestActivity.setCheckQuestion(checkQuestion);
+                            StartTestActivity.setTotalNumber(totalNumber);
+                            StartTestActivity.setRight(right);
+                            FragmentManager fragmentManager2 = getActivity().getSupportFragmentManager();
+                            fragmentManager2.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
+                        }
+                    });
+
+                    radioButton3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(radioButton3.getText().equals(answer)){
+                                right = right + 1;
+                            }
+                            totalNumber = totalNumber + 1;
+                            StartTestActivity.setCheckQuestion(checkQuestion);
+                            StartTestActivity.setTotalNumber(totalNumber);
+                            StartTestActivity.setRight(right);
+                            FragmentManager fragmentManager3 = getActivity().getSupportFragmentManager();
+                            fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
+                        }
+                    });
             }
         } else {
-            //Формирую листы вопросов и ответов по выбранной теме
-            //List<String> qStrings
-            //List<String> aStrings
-            for(int i = 0; i<questionsList.size(); i++) {
-                if(questionsList.get(i).uidCollect == contCollect && questionsList.get(i).uidTheme == contTheme) {
-                    qStrings.add(questionsList.get(i).questions);
-                    aStrings.add(questionsList.get(i).answers);
-                }
+            for(int i = 0; i < progressList.size(); i++) {
+                qStrings.add(progressList.get(i).questions);
+                aStrings.add(progressList.get(i).answers);
             }
 
-            //Questions questions
-            int line = StartTestActivity.getLine();
-
-            questions = qStrings.get(line);
-            answer = aStrings.get(line);
+            for (int i = 0; i < progressList.size(); i++) {
+                if (progressList.get(i).status == false) {
+                    questions = progressList.get(i).questions;
+                    answer = progressList.get(i).answers;
+                    line = (int)progressList.get(i).id;
+                    break;
+                }
+            }
             titleText = (TextView) view.findViewById(R.id.question);
             titleText.setText(questions);
-
+            
             do {
                 do {
                     i1 = new Random().nextInt(aStrings.size());
@@ -272,10 +260,14 @@ public class StartTest_fragment_v2 extends Fragment {
                     if(lineNext != qStrings.size()) {
                         if (radioButton1.getText().equals(answer)) {
                             right = right + 1;
+                            UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                    getContext(), progressList.get(line).id ,null,null,null,
+                                    null, radioButton1.getText().toString(), true);
                         }
                         totalNumber = totalNumber + 1;
-                        StartTestActivity.setContCollect(contCollect);
-                        StartTestActivity.setContTheme(contTheme);
+                        UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                getContext(), progressList.get(line).id ,null,null,null,
+                                null, radioButton1.getText().toString(), true);
                         StartTestActivity.setLine(lineNext);
                         StartTestActivity.setTotalNumber(totalNumber);
                         StartTestActivity.setRight(right);
@@ -285,13 +277,16 @@ public class StartTest_fragment_v2 extends Fragment {
                     } else {
                         if (radioButton1.getText().equals(answer)) {
                             right = right + 1;
+                            UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                    getContext(), progressList.get(line).id ,null,null,null,
+                                    null, radioButton1.getText().toString(), true);
                         }
+                        UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                getContext(), progressList.get(line).id ,null,null,null,
+                                null, radioButton1.getText().toString(), true);
                         Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
                         intent1.putExtra("totalNumber", totalNumber + 1);
                         intent1.putExtra("right_answer", right);
-                        intent1.putExtra("contTheme", contTheme);
-                        intent1.putExtra("contCollect", contCollect);
-                        intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
@@ -303,12 +298,16 @@ public class StartTest_fragment_v2 extends Fragment {
                 @Override
                 public void onClick(View view) {
                     if(lineNext != qStrings.size()) {
-                        if (radioButton2.getText().equals(answer)) {
+                        if (radioButton1.getText().equals(answer)) {
                             right = right + 1;
+                            UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                    getContext(), progressList.get(line).id ,null,null,null,
+                                    null, radioButton1.getText().toString(), true);
                         }
                         totalNumber = totalNumber + 1;
-                        StartTestActivity.setContCollect(contCollect);
-                        StartTestActivity.setContTheme(contTheme);
+                        UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                getContext(), progressList.get(line).id ,null,null,null,
+                                null, radioButton1.getText().toString(), true);
                         StartTestActivity.setLine(lineNext);
                         StartTestActivity.setTotalNumber(totalNumber);
                         StartTestActivity.setRight(right);
@@ -318,13 +317,16 @@ public class StartTest_fragment_v2 extends Fragment {
                     } else {
                         if (radioButton1.getText().equals(answer)) {
                             right = right + 1;
+                            UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                    getContext(), progressList.get(line).id ,null,null,null,
+                                    null, radioButton1.getText().toString(), true);
                         }
+                        UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                getContext(), progressList.get(line).id ,null,null,null,
+                                null, radioButton1.getText().toString(), true);
                         Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
                         intent1.putExtra("totalNumber", totalNumber + 1);
                         intent1.putExtra("right_answer", right);
-                        intent1.putExtra("contTheme", contTheme);
-                        intent1.putExtra("contCollect", contCollect);
-                        intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
@@ -336,12 +338,16 @@ public class StartTest_fragment_v2 extends Fragment {
                 @Override
                 public void onClick(View view) {
                     if(lineNext != qStrings.size()) {
-                        if (radioButton3.getText().equals(answer)) {
+                        if (radioButton1.getText().equals(answer)) {
                             right = right + 1;
+                            UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                    getContext(), progressList.get(line).id ,null,null,null,
+                                    null, radioButton1.getText().toString(), true);
                         }
                         totalNumber = totalNumber + 1;
-                        StartTestActivity.setContCollect(contCollect);
-                        StartTestActivity.setContTheme(contTheme);
+                        UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                getContext(), progressList.get(line).id ,null,null,null,
+                                null, radioButton1.getText().toString(), true);
                         StartTestActivity.setLine(lineNext);
                         StartTestActivity.setTotalNumber(totalNumber);
                         StartTestActivity.setRight(right);
@@ -351,13 +357,16 @@ public class StartTest_fragment_v2 extends Fragment {
                     } else {
                         if (radioButton1.getText().equals(answer)) {
                             right = right + 1;
+                            UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                    getContext(), progressList.get(line).id ,null,null,null,
+                                    null, radioButton1.getText().toString(), true);
                         }
+                        UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
+                                getContext(), progressList.get(line).id ,null,null,null,
+                                null, radioButton1.getText().toString(), true);
                         Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
                         intent1.putExtra("totalNumber", totalNumber + 1);
                         intent1.putExtra("right_answer", right);
-                        intent1.putExtra("contTheme", contTheme);
-                        intent1.putExtra("contCollect", contCollect);
-                        intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
