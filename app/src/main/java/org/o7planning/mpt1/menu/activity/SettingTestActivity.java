@@ -2,6 +2,7 @@ package org.o7planning.mpt1.menu.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Questions;
+import org.o7planning.mpt1.thread.progress.AllCleanProgressBaseThread;
+import org.o7planning.mpt1.thread.progress.InsertProgressBaseThread;
+import org.o7planning.mpt1.thread.progress.UpdateProgressBaseThread;
 import org.o7planning.mpt1.thread.question.AllQuestionsBaseThread;
 
 import java.util.ArrayList;
@@ -57,10 +61,13 @@ public class SettingTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_test_activity);
 
+        AllCleanProgressBaseThread allCleanProgressBaseThread = new AllCleanProgressBaseThread("AllClearProgress", getApplicationContext());
+
         contCollect = getIntent().getIntExtra("contCollect", 0);
         contTheme = getIntent().getIntExtra("contTheme", 0);
         nameCollect = getIntent().getStringExtra( "nameCollect");
         nameTheme = getIntent().getStringExtra("nameTheme");
+
         checkQuestion = getIntent().getBooleanExtra("checkQuestion", false);
 
         allQuestionsBaseThread = new AllQuestionsBaseThread("AllQuestion",getApplicationContext());
@@ -70,14 +77,27 @@ public class SettingTestActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         questions = new ArrayList<>();
+        questions = allQuestionsBaseThread.getQuestionsAll();
+
+        //************************
         listQuestion = new ArrayList<>();
         listAnswer = new ArrayList<>();
-        questions = allQuestionsBaseThread.getQuestionsAll();
+        //************************
 
         for(int i = 0; i<questions.size(); i++) {
             if(questions.get(i).uidCollect == contCollect && questions.get(i).uidTheme == contTheme) {
+
+                //************************
                 listQuestion.add(questions.get(i).questions);
                 listAnswer.add(questions.get(i).answers);
+                //************************
+
+                InsertProgressBaseThread insertProgressBaseThread = new InsertProgressBaseThread("ProgressBase", getApplicationContext(), nameCollect, nameTheme, questions.get(i).questions, questions.get(i).answers, null, false);
+                try {
+                    insertProgressBaseThread.mThread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
