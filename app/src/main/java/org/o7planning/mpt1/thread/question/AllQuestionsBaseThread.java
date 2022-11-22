@@ -1,4 +1,4 @@
-package org.o7planning.mpt1.thread;
+package org.o7planning.mpt1.thread.question;
 
 import android.content.Context;
 

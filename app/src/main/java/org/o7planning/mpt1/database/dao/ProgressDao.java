@@ -28,5 +28,6 @@ public interface ProgressDao {
     @Delete
     void delete(Progress progress);
 
-
+    @Query("DELETE FROM progress")
+    public void deleteAllFromTable();
 }

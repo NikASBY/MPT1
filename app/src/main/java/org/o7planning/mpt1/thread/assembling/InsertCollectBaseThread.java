@@ -1,4 +1,4 @@
-package org.o7planning.mpt1.thread;
+package org.o7planning.mpt1.thread.assembling;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,7 +8,7 @@ import org.o7planning.mpt1.database.MyDatabase;
 import org.o7planning.mpt1.database.SinglDatabase;
 import org.o7planning.mpt1.database.dao.AssemblingDao;
 
-public class UpdateCollectBaseThread implements Runnable {
+public class InsertCollectBaseThread implements Runnable{
 
     public Thread mThread;
     private MyDatabase mMyDatabase;
@@ -16,18 +16,18 @@ public class UpdateCollectBaseThread implements Runnable {
     private Assembling mAssembling;
     private AssemblingDao mAssemblingDao;
 
-    private Long id;
     private Long uid;
     private String assembling;
     private String theme;
     private String threadName;
 
+    public Long getUid() {
+        return uid;
+    }
 
-
-    public UpdateCollectBaseThread(String threadName, Context context, Long id, Long uid, String assembling, String theme) {
+    public InsertCollectBaseThread(String threadName, Context context, Long uid, String assembling, String theme) {
         this.mContext = context;
         this.threadName = threadName;
-        this.id = id;
         this.uid = uid;
         this.assembling = assembling;
         this.theme = theme;
@@ -39,9 +39,12 @@ public class UpdateCollectBaseThread implements Runnable {
     public void run() {
         mMyDatabase = SinglDatabase.getInstance(mContext).getMyDatabase();
         mAssemblingDao = mMyDatabase.assemblingDao();
-        mAssembling = mAssemblingDao.getById(id);
+        mAssembling = new Assembling();
+        mAssembling.id = mMyDatabase.assemblingDao().getAll().size();
         if(uid != null) {
             mAssembling.uid = uid;
+        } else {
+            mAssembling.uid = mMyDatabase.assemblingDao().getAll().size();
         }
         if(assembling != null) {
             mAssembling.assembling = assembling;
@@ -50,6 +53,6 @@ public class UpdateCollectBaseThread implements Runnable {
             Log.i("theme = " , theme);
             mAssembling.theme.add(theme);
         }
-        mAssemblingDao.update(mAssembling);
+        mAssemblingDao.insert(mAssembling);
     }
 }

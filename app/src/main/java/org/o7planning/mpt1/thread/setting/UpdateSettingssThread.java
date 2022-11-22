@@ -1,4 +1,4 @@
-package org.o7planning.mpt1.thread;
+package org.o7planning.mpt1.thread.setting;
 
 import android.content.Context;
 
@@ -7,7 +7,7 @@ import org.o7planning.mpt1.database.Settingss;
 import org.o7planning.mpt1.database.SinglDatabase;
 import org.o7planning.mpt1.database.dao.SettingssDao;
 
-public class InsertSettingsThread implements Runnable{
+public class UpdateSettingssThread implements Runnable{
 
     public Thread mThread;
     private MyDatabase myDatabase;
@@ -19,12 +19,12 @@ public class InsertSettingsThread implements Runnable{
     private Boolean changeLangRu;
     private Boolean changeLangEn;
 
-    public InsertSettingsThread(String threadName, Context context, Boolean changeLangRu, Boolean changeLangEn) {
+    public UpdateSettingssThread(String threadName, Context context, Boolean changeLangRu, Boolean changeLangEn) {
         this.mContext = context;
         this.threadName = threadName;
         this.changeLangRu = changeLangRu;
         this.changeLangEn = changeLangEn;
-        mThread = new Thread(this, threadName);
+        mThread = new Thread(this,threadName);
         mThread.start();
     }
 
@@ -32,16 +32,13 @@ public class InsertSettingsThread implements Runnable{
     public void run() {
         myDatabase = SinglDatabase.getInstance(mContext).getMyDatabase();
         settingssDao = myDatabase.settingsDao();
-        settingss = new Settingss();
-        settingss.id = myDatabase.settingsDao().getAll().size();
-        if(changeLangRu != null) {
+        settingss = settingssDao.getById(0);
+        if(settingss != null) {
             settingss.changeLangRu = changeLangRu;
         }
-        if(changeLangEn != null) {
+        if(settingss != null) {
             settingss.changeLangEn = changeLangEn;
         }
-        if(settingss.id == 0) {
-            settingssDao.insert(settingss);
-        }
+        settingssDao.update(settingss);
     }
 }

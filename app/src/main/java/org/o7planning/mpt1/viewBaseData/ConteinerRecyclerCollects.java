@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Assembling;
 import org.o7planning.mpt1.database.MyDatabase;
-import org.o7planning.mpt1.thread.AllCollectBaseThread;
+import org.o7planning.mpt1.thread.assembling.AllCollectBaseThread;
 
 import java.util.ArrayList;
 import java.util.List;

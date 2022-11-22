@@ -17,8 +17,8 @@ import org.o7planning.mpt1.database.Settingss;
 import org.o7planning.mpt1.menu.fragmentsForMainView.HomePanelFragment;
 import org.o7planning.mpt1.menu.fragmentsForMainView.ListThemeFragment;
 import org.o7planning.mpt1.menu.fragmentsForMainView.SelectCollectFragment;
-import org.o7planning.mpt1.thread.AllSettingsThread;
-import org.o7planning.mpt1.thread.InsertSettingsThread;
+import org.o7planning.mpt1.thread.setting.AllSettingsThread;
+import org.o7planning.mpt1.thread.setting.InsertSettingsThread;
 import org.o7planning.mpt1.viewBaseData.SinglAbstractFragmentActivity;
 
 import java.io.File;
