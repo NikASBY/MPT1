@@ -47,19 +47,39 @@ public class StartTest_fragment_v2 extends Fragment {
     private int i2;
     private int i3;
     private int randomQ;
-    private boolean checkQuestion;
     private static int totalQuestion;
 
-    private int contCollect;
-    private int contTheme;
+    public static boolean isCheckQuestion() {
+        return checkQuestion;
+    }
 
-    private Integer right = 0;
+    public static int getContCollect() {
+        return contCollect;
+    }
+
+    public static int getContTheme() {
+        return contTheme;
+    }
+
+    public static Integer getRight() {
+        return right;
+    }
+
+    public static Integer getTotalNumber() {
+        return totalNumber;
+    }
+
+    private static boolean checkQuestion;
+    private static int contCollect;
+    private static int contTheme;
+    private static Integer right = 0;
+    private static Integer totalNumber = 0;
 
     public static Integer getTotalQuestion() {
         return totalQuestion;
     }
 
-    private static Integer totalNumber = 0;
+
 
     private int progressStatus = 0;
 
@@ -374,6 +394,8 @@ public class StartTest_fragment_v2 extends Fragment {
                 }
             }
         });
+
+
         return view;
     }
 
