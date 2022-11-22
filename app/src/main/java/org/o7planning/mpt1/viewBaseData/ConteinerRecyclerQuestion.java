@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Questions;
-import org.o7planning.mpt1.thread.AllQuestionsBaseThread;
+import org.o7planning.mpt1.thread.question.AllQuestionsBaseThread;
 
 import java.util.ArrayList;
 import java.util.List;

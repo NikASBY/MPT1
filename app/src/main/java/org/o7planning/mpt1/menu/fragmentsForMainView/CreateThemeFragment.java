@@ -16,11 +16,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import org.o7planning.mpt1.BuildConfig;
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Assembling;
-import org.o7planning.mpt1.thread.AllCollectBaseThread;
-import org.o7planning.mpt1.thread.UpdateCollectBaseThread;
+import org.o7planning.mpt1.thread.assembling.AllCollectBaseThread;
+import org.o7planning.mpt1.thread.assembling.UpdateCollectBaseThread;
 import org.o7planning.mpt1.viewBaseData.ThemeRecycler;
 
 import java.util.List;

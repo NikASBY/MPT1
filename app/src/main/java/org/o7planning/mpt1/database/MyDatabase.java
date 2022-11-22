@@ -8,7 +8,7 @@ import org.o7planning.mpt1.database.dao.ProgressDao;
 import org.o7planning.mpt1.database.dao.QuestionDao;
 import org.o7planning.mpt1.database.dao.SettingssDao;
 
-@Database(entities = {Assembling.class,Progress.class, Settingss.class,Questions.class},version = 7)
+@Database(entities = {Assembling.class,Progress.class, Settingss.class,Questions.class},version = 8)
 public abstract class MyDatabase extends RoomDatabase {
     public abstract AssemblingDao assemblingDao();
     public abstract ProgressDao progressDao();

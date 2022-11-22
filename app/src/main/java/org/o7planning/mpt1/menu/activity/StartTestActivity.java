@@ -9,7 +9,7 @@ import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Questions;
 import org.o7planning.mpt1.menu.fragmentsForMainView.ProgressBarFragment;
 import org.o7planning.mpt1.menu.fragmentsForMainView.StartTest_fragment_v2;
-import org.o7planning.mpt1.thread.AllQuestionsBaseThread;
+import org.o7planning.mpt1.thread.question.AllQuestionsBaseThread;
 import org.o7planning.mpt1.viewBaseData.SinglAbstractFragmentActivity;
 
 import java.util.ArrayList;

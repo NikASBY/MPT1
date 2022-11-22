@@ -1,4 +1,4 @@
-package org.o7planning.mpt1.thread;
+package org.o7planning.mpt1.thread.question;
 
 import android.content.Context;
 
@@ -7,7 +7,7 @@ import org.o7planning.mpt1.database.Questions;
 import org.o7planning.mpt1.database.SinglDatabase;
 import org.o7planning.mpt1.database.dao.QuestionDao;
 
-public class UpdateQuestionsBaseThread implements Runnable {
+public class InsertQuestionsBaseThread implements Runnable {
 
     public Thread mThread;
     private MyDatabase mMyDatabase;
@@ -15,19 +15,15 @@ public class UpdateQuestionsBaseThread implements Runnable {
     private Questions mQuestions;
     private QuestionDao mQuestionDao;
 
-    private Long id;
     private Long uidCollect;
     private Long uidTheme;
     private String question;
     private String answer;
     private String threadName;
 
-
-
-    public UpdateQuestionsBaseThread(String threadName, Context context, Long id, Long uidCollect, Long uidTheme, String question, String answer) {
+    public InsertQuestionsBaseThread(String threadName, Context context,Long uidCollect, Long uidTheme, String question, String answer) {
         this.mContext = context;
         this.threadName = threadName;
-        this.id = id;
         this.uidCollect = uidCollect;
         this.uidTheme = uidTheme;
         this.question = question;
@@ -40,12 +36,17 @@ public class UpdateQuestionsBaseThread implements Runnable {
     public void run() {
         mMyDatabase = SinglDatabase.getInstance(mContext).getMyDatabase();
         mQuestionDao = mMyDatabase.questionsDao();
-        mQuestions = mQuestionDao.getById(id);
+        mQuestions = new Questions();
+        mQuestions.id = mMyDatabase.questionsDao().getAll().size();
         if(uidCollect != null) {
             mQuestions.uidCollect = uidCollect;
+        } else {
+            mQuestions.uidCollect = mMyDatabase.questionsDao().getAll().size();
         }
         if(uidTheme != null) {
             mQuestions.uidTheme = uidTheme;
+        } else {
+            mQuestions.uidTheme = mMyDatabase.questionsDao().getAll().size();
         }
         if(question != null) {
             mQuestions.questions = question;
@@ -53,6 +54,6 @@ public class UpdateQuestionsBaseThread implements Runnable {
         if(answer != null) {
             mQuestions.answers = answer;
         }
-        mQuestionDao.update(mQuestions);
+        mQuestionDao.insert(mQuestions);
     }
 }

@@ -21,13 +21,12 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.o7planning.mpt1.BuildConfig;
 import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Assembling;
 import org.o7planning.mpt1.database.Questions;
-import org.o7planning.mpt1.thread.AllCollectBaseThread;
-import org.o7planning.mpt1.thread.AllQuestionsBaseThread;
-import org.o7planning.mpt1.thread.InsertQuestionsBaseThread;
+import org.o7planning.mpt1.thread.assembling.AllCollectBaseThread;
+import org.o7planning.mpt1.thread.question.AllQuestionsBaseThread;
+import org.o7planning.mpt1.thread.question.InsertQuestionsBaseThread;
 import org.o7planning.mpt1.viewBaseData.QuestionRecycler;
 
 import java.io.File;

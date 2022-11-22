@@ -13,9 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import org.o7planning.mpt1.BuildConfig;
 import org.o7planning.mpt1.R;
-import org.o7planning.mpt1.thread.InsertCollectBaseThread;
+import org.o7planning.mpt1.thread.assembling.InsertCollectBaseThread;
 import org.o7planning.mpt1.viewBaseData.CollectRecycler;
 
 public class CreateCollectFragment extends Fragment {
