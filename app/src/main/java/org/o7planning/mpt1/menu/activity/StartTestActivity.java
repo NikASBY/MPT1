@@ -39,6 +39,16 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
     private static Integer right = 0;
     private static Integer totalNumber = 0;
 
+    public static Integer getClockMaxTimer() {
+        return clockMaxTimer;
+    }
+
+    public static void setClockMaxTimer(Integer clockMaxTimer1) {
+        clockMaxTimer = clockMaxTimer1;
+    }
+
+    private static Integer clockMaxTimer;
+
     @Override
     public Fragment getFragment1() {
         return null;
@@ -102,6 +112,7 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
         line = getIntent().getIntExtra("line", 0);
         nameTheme = getIntent().getStringExtra("nameTheme");
         nameCollect = getIntent().getStringExtra("nameCollect");
+        clockMaxTimer = getIntent().getIntExtra("clockTimer",0);
     }
 
     public static String getNameTheme() {

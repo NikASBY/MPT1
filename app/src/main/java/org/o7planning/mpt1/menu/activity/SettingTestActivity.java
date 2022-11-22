@@ -3,9 +3,12 @@ package org.o7planning.mpt1.menu.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -27,6 +30,7 @@ public class SettingTestActivity extends AppCompatActivity {
     private TextView titleListQuestion;
     private TextView titleListAnswer;
     private CheckBox randomQuestions;
+    private Spinner clockTest;
 
 
     private String nameCollect;
@@ -43,6 +47,10 @@ public class SettingTestActivity extends AppCompatActivity {
 
     private AllQuestionsBaseThread allQuestionsBaseThread;
     private List<Questions> questions;
+
+    private Integer clockMaxTimer;
+
+    private Integer[] timer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,6 +105,21 @@ public class SettingTestActivity extends AppCompatActivity {
                 checkQuestion = b;
             }
         });
+        timer = new Integer[]{10,20,30};
+        clockTest = (Spinner) findViewById(R.id.spinner2);
+        ArrayAdapter<Integer> integerArrayAdapter = new ArrayAdapter<>(getApplicationContext(),R.layout.row,R.id.textView1,timer);
+        clockTest.setAdapter(integerArrayAdapter);
+        clockTest.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (timer != null) {
+                    clockMaxTimer = timer[i];
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
 
         buttonOk = (Button) findViewById(R.id.button_ok);
         buttonOk.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +132,7 @@ public class SettingTestActivity extends AppCompatActivity {
                 intentButtonOk.putExtra("line", lineNext);
                 intentButtonOk.putExtra("nameTheme", nameTheme);
                 intentButtonOk.putExtra("nameCollect", nameCollect);
+                intentButtonOk.putExtra("clockTimer", clockMaxTimer);
                 intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -123,6 +147,7 @@ public class SettingTestActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
     public static Integer getTotalQuestion() {
