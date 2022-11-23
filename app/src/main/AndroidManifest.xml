@@ -13,18 +13,25 @@
         android:theme="@style/Theme.MPT1">
         <activity
             android:name=".menu.activity.NewMainMenu"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".viewBaseData.QuestionRecycler"/>
-        <activity android:name=".viewBaseData.ThemeRecycler"/>
-        <activity android:name=".viewBaseData.CollectRecycler"/>
-        <activity android:name=".menu.activity.SettingTestActivity"/>
-        <activity android:name=".menu.activity.StartTestActivity"/>
-        <activity android:name=".menu.activity.ResultTestActivity"/>
+        <activity android:name=".viewBaseData.QuestionRecycler"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".viewBaseData.ThemeRecycler"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".viewBaseData.CollectRecycler"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".menu.activity.SettingTestActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".menu.activity.StartTestActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".menu.activity.ResultTestActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

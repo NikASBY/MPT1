@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,13 +20,12 @@ import org.o7planning.mpt1.menu.activity.ResultTestActivity;
 import org.o7planning.mpt1.menu.activity.SettingTestActivity;
 import org.o7planning.mpt1.menu.activity.StartTestActivity;
 
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
-
 public class ProgressBarFragment extends Fragment {
 
     private ProgressBar progressBar;
     private TextView tvProgressHorizontal;
+
+    private boolean checkQuestion;
 
     @Nullable
     @Override
@@ -38,7 +36,6 @@ public class ProgressBarFragment extends Fragment {
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar2);
         tvProgressHorizontal = (TextView) view.findViewById(R.id.tv_progress_bar);
 
-        boolean checkQuestion;
         checkQuestion = SettingTestActivity.isCheckQuestion();
         if(!checkQuestion) {
             Integer totalNumber = SettingTestActivity.getTotalQuestion();
@@ -84,8 +81,8 @@ public class ProgressBarFragment extends Fragment {
                             Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
                             intent1.putExtra("totalNumber", StartTest_fragment_v2.getTotalNumber());
                             intent1.putExtra("right_answer", StartTest_fragment_v2.getRight());
-                            intent1.putExtra("contTheme", StartTest_fragment_v2.getContTheme());
-                            intent1.putExtra("contCollect", StartTest_fragment_v2.getContCollect());
+                            intent1.putExtra("contTheme", StartTestActivity.getContTheme());
+                            intent1.putExtra("contCollect", StartTestActivity.getContCollect());
                             intent1.putExtra("checkQuestion1", StartTest_fragment_v2.isCheckQuestion());
                             intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

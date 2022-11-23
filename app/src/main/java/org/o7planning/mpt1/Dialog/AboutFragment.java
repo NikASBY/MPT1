@@ -1,11 +1,8 @@
 package org.o7planning.mpt1.Dialog;
 
-import static android.provider.ContactsContract.*;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -16,8 +13,6 @@ import androidx.fragment.app.DialogFragment;
 
 import org.o7planning.mpt1.BuildConfig;
 import org.o7planning.mpt1.R;
-
-import java.util.Date;
 
 public class AboutFragment  extends DialogFragment {
 

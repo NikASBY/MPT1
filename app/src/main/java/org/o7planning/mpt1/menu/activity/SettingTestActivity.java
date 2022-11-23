@@ -2,7 +2,6 @@ package org.o7planning.mpt1.menu.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +18,6 @@ import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Questions;
 import org.o7planning.mpt1.thread.progress.AllCleanProgressBaseThread;
 import org.o7planning.mpt1.thread.progress.InsertProgressBaseThread;
-import org.o7planning.mpt1.thread.progress.UpdateProgressBaseThread;
 import org.o7planning.mpt1.thread.question.AllQuestionsBaseThread;
 
 import java.util.ArrayList;

@@ -4,7 +4,6 @@ import android.content.Context;
 
 import org.o7planning.mpt1.database.MyDatabase;
 import org.o7planning.mpt1.database.Progress;
-import org.o7planning.mpt1.database.Questions;
 import org.o7planning.mpt1.database.SinglDatabase;
 
 import java.util.List;

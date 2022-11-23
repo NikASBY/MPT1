@@ -24,12 +24,12 @@ import org.o7planning.mpt1.database.Assembling;
 import org.o7planning.mpt1.database.Settingss;
 import org.o7planning.mpt1.menu.activity.NewMainMenu;
 import org.o7planning.mpt1.thread.assembling.AllCleanAssemblingBaseThread;
-import org.o7planning.mpt1.thread.question.AllCleanQuestionBaseThread;
 import org.o7planning.mpt1.thread.assembling.AllCollectBaseThread;
-import org.o7planning.mpt1.thread.setting.AllSettingsThread;
 import org.o7planning.mpt1.thread.assembling.InsertCollectBaseThread;
-import org.o7planning.mpt1.thread.question.InsertQuestionsBaseThread;
 import org.o7planning.mpt1.thread.assembling.UpdateCollectBaseThread;
+import org.o7planning.mpt1.thread.question.AllCleanQuestionBaseThread;
+import org.o7planning.mpt1.thread.question.InsertQuestionsBaseThread;
+import org.o7planning.mpt1.thread.setting.AllSettingsThread;
 import org.o7planning.mpt1.thread.setting.UpdateSettingssThread;
 
 import java.io.File;

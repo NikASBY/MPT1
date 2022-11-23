@@ -86,6 +86,8 @@ public class StartTest_fragment_v2 extends Fragment {
     }
 
     private int progressStatus = 0;
+    private int rightLine = 0;
+    private int totalNumberLine = 0;
 
     @Nullable
     @Override
@@ -117,7 +119,6 @@ public class StartTest_fragment_v2 extends Fragment {
                     }
 
                     totalQuestion = qStrings.size();
-                    //Questions questions
                     int rand = (int) (Math.random()*qStrings.size());
 
                     questions = qStrings.get(rand);
@@ -136,7 +137,6 @@ public class StartTest_fragment_v2 extends Fragment {
                     radioButton1.setText(aStrings.get(i1));
                     radioButton2.setText(aStrings.get(i2));
                     radioButton3.setText(aStrings.get(i3));
-                    //radioButton1.setBackground(getResources().getDrawable(R.drawable.right_qnswer));
 
                     randomQ = new Random().nextInt(3);
                     switch (randomQ) {
@@ -245,21 +245,27 @@ public class StartTest_fragment_v2 extends Fragment {
                     break;
             }
 
-            right = StartTestActivity.getRight();
-            totalNumber = StartTestActivity.getTotalNumber();
+            for (int i = 0; i < progressList.size(); i++) {
+                if (progressList.get(i).answerFail != null) {
+                    totalNumberLine++;
+                }
+                if (progressList.get(i).status == true) {
+                    rightLine++;
+                }
+            }
 
-            totalText.setText("Total answer = " + totalNumber.toString());
-            rightText.setText("Right answer = " + right.toString());
+
+            totalText.setText("Total answer = " + totalNumberLine);
+            rightText.setText("Right answer = " + rightLine);
 
             int lineNext = line + 1;
-
+            StartTestActivity.setLine(line);
             radioButton1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int time = 0;
                     if(lineNext != qStrings.size()) {
                         if (radioButton1.getText().equals(answer)) {
-                            right = right + 1;
                             UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton1.getText().toString(), true);
@@ -268,16 +274,12 @@ public class StartTest_fragment_v2 extends Fragment {
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton1.getText().toString(), false);
                         }
-                        totalNumber = totalNumber + 1;
-                        StartTestActivity.setLine(lineNext);
-                        StartTestActivity.setTotalNumber(totalNumber);
-                        StartTestActivity.setRight(right);
+                        StartTestActivity.setTotalNumber(totalNumberLine);
                         FragmentManager fragmentManager3 = getActivity().getSupportFragmentManager();
                         fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
                         fragmentManager3.beginTransaction().replace(R.id.progressBar_test_container, new ProgressBarFragment()).commit();
                     } else {
                         if (radioButton1.getText().equals(answer)) {
-                            right = right + 1;
                             UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton1.getText().toString(), true);
@@ -287,8 +289,11 @@ public class StartTest_fragment_v2 extends Fragment {
                                     null, radioButton1.getText().toString(), false);
                         }
                         Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
-                        intent1.putExtra("totalNumber", totalNumber + 1);
-                        intent1.putExtra("right_answer", right);
+                        intent1.putExtra("totalNumber", totalNumberLine + 1);
+                        intent1.putExtra("right_answer", rightLine);
+                        intent1.putExtra("contTheme", StartTestActivity.getContTheme());
+                        intent1.putExtra("contCollect", StartTestActivity.getContCollect());
+                        intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
@@ -301,7 +306,6 @@ public class StartTest_fragment_v2 extends Fragment {
                 public void onClick(View view) {
                     if(lineNext != qStrings.size()) {
                         if (radioButton2.getText().equals(answer)) {
-                            right = right + 1;
                             UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton2.getText().toString(), true);
@@ -310,16 +314,12 @@ public class StartTest_fragment_v2 extends Fragment {
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton2.getText().toString(), false);
                         }
-                        totalNumber = totalNumber + 1;
-                        StartTestActivity.setLine(lineNext);
-                        StartTestActivity.setTotalNumber(totalNumber);
-                        StartTestActivity.setRight(right);
+                        StartTestActivity.setTotalNumber(totalNumberLine);
                         FragmentManager fragmentManager3 = getActivity().getSupportFragmentManager();
                         fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
                         fragmentManager3.beginTransaction().replace(R.id.progressBar_test_container, new ProgressBarFragment()).commit();
                     } else {
                         if (radioButton2.getText().equals(answer)) {
-                            right = right + 1;
                             UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton2.getText().toString(), true);
@@ -329,8 +329,11 @@ public class StartTest_fragment_v2 extends Fragment {
                                     null, radioButton2.getText().toString(), false);
                         }
                         Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
-                        intent1.putExtra("totalNumber", totalNumber + 1);
-                        intent1.putExtra("right_answer", right);
+                        intent1.putExtra("totalNumber", totalNumberLine + 1);
+                        intent1.putExtra("right_answer", rightLine);
+                        intent1.putExtra("contTheme", StartTestActivity.getContTheme());
+                        intent1.putExtra("contCollect", StartTestActivity.getContCollect());
+                        intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
@@ -343,7 +346,6 @@ public class StartTest_fragment_v2 extends Fragment {
                 public void onClick(View view) {
                     if(lineNext != qStrings.size()) {
                         if (radioButton3.getText().equals(answer)) {
-                            right = right + 1;
                             UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton3.getText().toString(), true);
@@ -352,16 +354,12 @@ public class StartTest_fragment_v2 extends Fragment {
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton3.getText().toString(), false);
                         }
-                        totalNumber = totalNumber + 1;
-                        StartTestActivity.setLine(lineNext);
-                        StartTestActivity.setTotalNumber(totalNumber);
-                        StartTestActivity.setRight(right);
+                        StartTestActivity.setTotalNumber(totalNumberLine);
                         FragmentManager fragmentManager3 = getActivity().getSupportFragmentManager();
                         fragmentManager3.beginTransaction().replace(R.id.main_test_container2,new StartTest_fragment_v2()).commit();
                         fragmentManager3.beginTransaction().replace(R.id.progressBar_test_container, new ProgressBarFragment()).commit();
                     } else {
                         if (radioButton3.getText().equals(answer)) {
-                            right = right + 1;
                             UpdateProgressBaseThread updateProgressBaseThread = new UpdateProgressBaseThread("UpdateProgress",
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton3.getText().toString(), true);
@@ -371,8 +369,11 @@ public class StartTest_fragment_v2 extends Fragment {
                                     null, radioButton3.getText().toString(), false);
                         }
                         Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
-                        intent1.putExtra("totalNumber", totalNumber + 1);
-                        intent1.putExtra("right_answer", right);
+                        intent1.putExtra("totalNumber", totalNumberLine + 1);
+                        intent1.putExtra("right_answer", rightLine);
+                        intent1.putExtra("contTheme", StartTestActivity.getContTheme());
+                        intent1.putExtra("contCollect", StartTestActivity.getContCollect());
+                        intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
@@ -388,19 +389,21 @@ public class StartTest_fragment_v2 extends Fragment {
                     Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
                     intent1.putExtra("totalNumber", totalNumber);
                     intent1.putExtra("right_answer", right);
-                    intent1.putExtra("contTheme", contTheme);
-                    intent1.putExtra("contCollect", contCollect);
+                    intent1.putExtra("contTheme", StartTestActivity.getContTheme());
+                    intent1.putExtra("contCollect", StartTestActivity.getContCollect());
                     intent1.putExtra("checkQuestion1", checkQuestion);
                     intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                     intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent1);
                 } else {
+                    right = rightLine;
+                    totalNumber =totalNumberLine;
                     Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
                     intent1.putExtra("totalNumber", totalNumber);
                     intent1.putExtra("right_answer", right);
-                    intent1.putExtra("contTheme", contTheme);
-                    intent1.putExtra("contCollect", contCollect);
+                    intent1.putExtra("contTheme", StartTestActivity.getContTheme());
+                    intent1.putExtra("contCollect", StartTestActivity.getContCollect());
                     intent1.putExtra("checkQuestion1", checkQuestion);
                     intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
                     intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -409,8 +412,6 @@ public class StartTest_fragment_v2 extends Fragment {
                 }
             }
         });
-
-
         return view;
     }
 

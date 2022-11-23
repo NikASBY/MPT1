@@ -4,10 +4,8 @@ import android.content.Context;
 
 import org.o7planning.mpt1.database.MyDatabase;
 import org.o7planning.mpt1.database.Progress;
-import org.o7planning.mpt1.database.Questions;
 import org.o7planning.mpt1.database.SinglDatabase;
 import org.o7planning.mpt1.database.dao.ProgressDao;
-import org.o7planning.mpt1.database.dao.QuestionDao;
 
 public class InsertProgressBaseThread implements Runnable {
 
