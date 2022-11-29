@@ -151,9 +151,6 @@ public class SettingTestActivity extends AppCompatActivity {
                 intentButtonOk.putExtra("nameTheme", nameTheme);
                 intentButtonOk.putExtra("nameCollect", nameCollect);
                 intentButtonOk.putExtra("clockTimer", clockMaxTimer);
-                intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intentButtonOk.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intentButtonOk);
             }
         });
@@ -162,7 +159,8 @@ public class SettingTestActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intentButtonBack = new Intent(SettingTestActivity.this, NewMainMenu.class);
+                startActivity(intentButtonBack);
             }
         });
 
@@ -174,5 +172,11 @@ public class SettingTestActivity extends AppCompatActivity {
 
     public static boolean isCheckQuestion() {
         return checkQuestion;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intentButtonBack = new Intent(SettingTestActivity.this, NewMainMenu.class);
+        startActivity(intentButtonBack);
     }
 }

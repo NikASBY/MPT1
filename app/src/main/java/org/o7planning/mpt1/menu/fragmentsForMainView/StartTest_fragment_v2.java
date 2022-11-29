@@ -17,6 +17,7 @@ import org.o7planning.mpt1.R;
 import org.o7planning.mpt1.database.Progress;
 import org.o7planning.mpt1.database.Questions;
 import org.o7planning.mpt1.menu.activity.ResultTestActivity;
+import org.o7planning.mpt1.menu.activity.ResultTestLineActivity;
 import org.o7planning.mpt1.menu.activity.StartTestActivity;
 import org.o7planning.mpt1.thread.progress.AllProgressBaseThread;
 import org.o7planning.mpt1.thread.progress.UpdateProgressBaseThread;
@@ -288,7 +289,7 @@ public class StartTest_fragment_v2 extends Fragment {
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton1.getText().toString(), false);
                         }
-                        Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
+                        Intent intent1 = new Intent(getContext(), ResultTestLineActivity.class);
                         intent1.putExtra("totalNumber", totalNumberLine + 1);
                         intent1.putExtra("right_answer", rightLine);
                         intent1.putExtra("contTheme", StartTestActivity.getContTheme());
@@ -328,7 +329,7 @@ public class StartTest_fragment_v2 extends Fragment {
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton2.getText().toString(), false);
                         }
-                        Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
+                        Intent intent1 = new Intent(getContext(), ResultTestLineActivity.class);
                         intent1.putExtra("totalNumber", totalNumberLine + 1);
                         intent1.putExtra("right_answer", rightLine);
                         intent1.putExtra("contTheme", StartTestActivity.getContTheme());
@@ -368,7 +369,7 @@ public class StartTest_fragment_v2 extends Fragment {
                                     getContext(), progressList.get(line).id ,null,null,null,
                                     null, radioButton3.getText().toString(), false);
                         }
-                        Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
+                        Intent intent1 = new Intent(getContext(), ResultTestLineActivity.class);
                         intent1.putExtra("totalNumber", totalNumberLine + 1);
                         intent1.putExtra("right_answer", rightLine);
                         intent1.putExtra("contTheme", StartTestActivity.getContTheme());
@@ -399,7 +400,7 @@ public class StartTest_fragment_v2 extends Fragment {
                 } else {
                     right = rightLine;
                     totalNumber =totalNumberLine;
-                    Intent intent1 = new Intent(getContext(), ResultTestActivity.class);
+                    Intent intent1 = new Intent(getContext(), ResultTestLineActivity.class);
                     intent1.putExtra("totalNumber", totalNumber);
                     intent1.putExtra("right_answer", right);
                     intent1.putExtra("contTheme", StartTestActivity.getContTheme());

@@ -1,6 +1,8 @@
 package org.o7planning.mpt1.menu.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -75,22 +77,22 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
     }
 
     @Override
-    public Integer getConteiner1() {
+    public Integer getContainer1() {
         return R.id.main_test_container1;
     }
 
     @Override
-    public Integer getConteiner2() {
+    public Integer getContainer2() {
         return R.id.main_test_container2;
     }
 
     @Override
-    public Integer getConteiner3() {
+    public Integer getContainer3() {
         return R.id.progressBar_test_container;
     }
 
     @Override
-    public Integer getConteiner4() {
+    public Integer getContainer4() {
         return null;
     }
 
@@ -165,5 +167,17 @@ public class StartTestActivity extends SinglAbstractFragmentActivity {
 
     public static void setTotalNumber(Integer totalNumber) {
         StartTestActivity.totalNumber = totalNumber;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent(StartTestActivity.this, SettingTestActivity.class);
+        intent1.putExtra("totalNumber", totalNumber);
+        intent1.putExtra("contTheme", StartTestActivity.getContTheme());
+        intent1.putExtra("contCollect", StartTestActivity.getContCollect());
+        intent1.putExtra("checkQuestion1", checkQuestion);
+        intent1.putExtra("nameCollect", StartTestActivity.getNameCollect());
+        intent1.putExtra("nameTheme", nameTheme);
+        startActivity(intent1);
     }
 }
