@@ -34,6 +34,11 @@
     <string name="name_theme">Name theme:</string>
     <string name="select_theme">SELECT THEME</string>
     <string name="repeat_theme">REPEAT THE THEME</string>
+    <string name="title_result">TEST RESULTS</string>
+    <string name="title_table_result_text">TEST RESULTS</string>
+    <string name="n">№</string>
+    <string name="name_question">Question</string>
+    <string name="name_answer">Answer</string>
 
     <string name="choosing_the_application_language">Choosing the application language</string>
     <string name="loading_the_database">Loading the database</string>

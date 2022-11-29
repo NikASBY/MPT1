@@ -76,22 +76,22 @@ public class NewMainMenu extends SinglAbstractFragmentActivity {
     }
 
     @Override
-    public Integer getConteiner1() {
+    public Integer getContainer1() {
         return R.id.home_panel_conteiner;
     }
 
     @Override
-    public Integer getConteiner2() {
+    public Integer getContainer2() {
         return R.id.list_tests;
     }
 
     @Override
-    public Integer getConteiner3() {
+    public Integer getContainer3() {
         return R.id.select_user;
     }
 
     @Override
-    public Integer getConteiner4() {
+    public Integer getContainer4() {
         return null;
     }
 
@@ -154,5 +154,9 @@ public class NewMainMenu extends SinglAbstractFragmentActivity {
             getBaseContext().getResources().updateConfiguration(configuration, null);
             Log.i("(StartAppSetting) Lang: ", locale.getLanguage());
         }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

@@ -14,10 +14,10 @@ public abstract class SinglAbstractFragmentActivity extends AppCompatActivity {
     public abstract Fragment getFragment3();
     public abstract Fragment getFragment4();
     public abstract Integer getLayout1();
-    public abstract Integer getConteiner1();
-    public abstract Integer getConteiner2();
-    public abstract Integer getConteiner3();
-    public abstract Integer getConteiner4();
+    public abstract Integer getContainer1();
+    public abstract Integer getContainer2();
+    public abstract Integer getContainer3();
+    public abstract Integer getContainer4();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,35 +25,35 @@ public abstract class SinglAbstractFragmentActivity extends AppCompatActivity {
         setContentView(getLayout1());
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        if(getConteiner1() != null && getFragment1() != null) {
-            Fragment fragment1 = fragmentManager.findFragmentById(getConteiner1());
+        if(getContainer1() != null && getFragment1() != null) {
+            Fragment fragment1 = fragmentManager.findFragmentById(getContainer1());
             if(fragment1 == null) {
                 fragment1 = getFragment1();
-                fragmentManager.beginTransaction().add(getConteiner1(),fragment1).commit();
+                fragmentManager.beginTransaction().add(getContainer1(),fragment1).commit();
             }
         }
 
-        if(getConteiner2() != null && getFragment2() != null) {
-            Fragment fragment2 = fragmentManager.findFragmentById(getConteiner2());
+        if(getContainer2() != null && getFragment2() != null) {
+            Fragment fragment2 = fragmentManager.findFragmentById(getContainer2());
             if(fragment2 == null) {
                 fragment2 = getFragment2();
-                fragmentManager.beginTransaction().add(getConteiner2(),fragment2).commit();
+                fragmentManager.beginTransaction().add(getContainer2(),fragment2).commit();
             }
         }
 
-        if(getConteiner3() != null && getFragment3() != null) {
-            Fragment fragment3 = fragmentManager.findFragmentById(getConteiner3());
+        if(getContainer3() != null && getFragment3() != null) {
+            Fragment fragment3 = fragmentManager.findFragmentById(getContainer3());
             if(fragment3 == null) {
                 fragment3 = getFragment3();
-                fragmentManager.beginTransaction().add(getConteiner3(),fragment3).commit();
+                fragmentManager.beginTransaction().add(getContainer3(),fragment3).commit();
             }
         }
 
-        if(getConteiner4() != null && getFragment4() != null) {
-            Fragment fragment4 = fragmentManager.findFragmentById(getConteiner4());
+        if(getContainer4() != null && getFragment4() != null) {
+            Fragment fragment4 = fragmentManager.findFragmentById(getContainer4());
             if(fragment4 == null) {
                 fragment4 = getFragment4();
-                fragmentManager.beginTransaction().add(getConteiner4(),fragment4).commit();
+                fragmentManager.beginTransaction().add(getContainer4(),fragment4).commit();
             }
         }
     }

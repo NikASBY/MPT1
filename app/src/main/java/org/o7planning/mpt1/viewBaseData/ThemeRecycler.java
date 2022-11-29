@@ -31,22 +31,22 @@ public class ThemeRecycler extends SinglAbstractFragmentActivity{
     }
 
     @Override
-    public Integer getConteiner1() {
+    public Integer getContainer1() {
         return R.id.conteiner_main;
     }
 
     @Override
-    public Integer getConteiner2() {
+    public Integer getContainer2() {
         return null;
     }
 
     @Override
-    public Integer getConteiner3() {
+    public Integer getContainer3() {
         return null;
     }
 
     @Override
-    public Integer getConteiner4() {
+    public Integer getContainer4() {
         return null;
     }
 }

@@ -33,6 +33,11 @@
     <string name="name_theme">Название темы:</string>
     <string name="select_theme">ВЫБРАТЬ ТЕМУ</string>
     <string name="repeat_theme">ПОВТОРИТЬ ТЕМУ</string>
+    <string name="title_result">РЕЗУЛЬТАТЫ ТЕСТА</string>
+    <string name="title_table_result_text">РЕЗУЛЬТАТЫ ПРОХОЖДЕНИЯ ТЕСТА</string>
+    <string name="n">№</string>
+    <string name="name_question">Вопрос</string>
+    <string name="name_answer">Ответ</string>
 
     <string name="choosing_the_application_language">Выбор языка приложения</string>
     <string name="loading_the_database">Загрузка базы</string>
